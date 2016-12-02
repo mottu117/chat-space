@@ -14,6 +14,8 @@ module ChatSpace
 
     config.generators do |g| #rails g ファイル生成抑制
       g.helper false
+      g.assets false
+      g.test_framework false
       g.stylesheets false
       g.javascripts false
     end
