@@ -67,6 +67,7 @@ Please feel free to use a different markup language if you do not plan to run --
   group_name  / text NOT NULL
   created_at  / datetime NOT NULL,
   updated_at  / datetime NOT NULL,
+
   PRIMARY KEY (`id`),
 
 
