@@ -1,8 +1,7 @@
-== README
-
-<tt>rake doc:app</tt>  
-
 # Database_design  
+
+has_many :comments
+belongs_to :user
 
 ## users(use gem device)  
 ~~~
@@ -23,6 +22,9 @@
 ~~~  
   ***
 ~~~
+  * has_many :users_groups
+~~~
+~~~
   * PRIMARY KEY (`id`),  
   * UNIQUE KEY `index_users_on_email` (`email`),  
   * UNIQUE KEY `index_users_on_reset_password_token` (`reset_password_token`)  
@@ -38,6 +40,11 @@
 ~~~  
   ***
 ~~~
+  * has_many :groups
+  * has_many :messages
+  * belongs_to :user
+~~~
+~~~
   * PRIMARY KEY (`id`),  
   * FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)  
   * FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`)  
@@ -52,13 +59,16 @@
 ~~~  
   ***
 ~~~
+  * belongs_to :user_group
+~~~
+~~~
   * PRIMARY KEY (`id`)
 ~~~
 
 ## messages  
 ~~~
   * id          / int(11) NOT NULL AUTO_INCREMENT,  
-  * message_txt / text  
+  * text        / text  
   * image_url   / text  
   * user_id     / references NOT NULL  
   * group_id    / references NOT NULL  
@@ -66,6 +76,9 @@
   * updated_at  / datetime NOT NULL,  
 ~~~
   ***
+~~~
+  * belongs_to :user_group
+~~~
 ~~~
   * PRIMARY KEY (`id`),  
   * FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)  
