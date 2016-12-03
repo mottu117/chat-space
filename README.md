@@ -27,10 +27,9 @@ Things you may want to cover:
 Please feel free to use a different markup language if you do not plan to run -->
 <tt>rake doc:app</tt>.
 
-
 # Database_design
 
-##users(use gem device)
+## users(use gem device)
   id                       / int(11) NOT NULL AUTO_INCREMENT,
   email                    / varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   encrypted_password       / varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -51,7 +50,7 @@ Please feel free to use a different markup language if you do not plan to run --
   UNIQUE KEY `index_users_on_reset_password_token` (`reset_password_token`)
 
 
-##groups
+## groups
   id          / int(11) NOT NULL AUTO_INCREMENT,
   group_name  / text NOT NULL
   user_id     / references NOT NULL
@@ -61,7 +60,7 @@ Please feel free to use a different markup language if you do not plan to run --
   PRIMARY KEY (`id`),
   FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 
-##messages
+## messages
   id          / int(11) NOT NULL AUTO_INCREMENT,
   message_txt / text
   image_url   / text
@@ -73,6 +72,7 @@ Please feel free to use a different markup language if you do not plan to run --
   PRIMARY KEY (`id`),
   FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
   FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`)
+
 
 
 
