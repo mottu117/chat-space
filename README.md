@@ -1,6 +1,6 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
+<!-- This README would normally document whatever steps are necessary to get the
 application up and running.
 
 Things you may want to cover:
@@ -24,5 +24,56 @@ Things you may want to cover:
 * ...
 
 
-Please feel free to use a different markup language if you do not plan to run
+Please feel free to use a different markup language if you do not plan to run -->
 <tt>rake doc:app</tt>.
+
+
+# Database_design
+
+##users(use gem device)
+  id                       / int(11) NOT NULL AUTO_INCREMENT,
+  email                    / varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  encrypted_password       / varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  reset_password_token     / varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  reset_password_sent_at   / datetime DEFAULT NULL,
+  remember_created_at      / datetime DEFAULT NULL,
+  sign_in_count            / int(11) NOT NULL DEFAULT '0',
+  current_sign_in_at       / datetime DEFAULT NULL,
+  last_sign_in_at          / datetime DEFAULT NULL,
+  current_sign_in_ip       / varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  last_sign_in_ip          / varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  created_at               / datetime NOT NULL,
+  updated_at               / datetime NOT NULL,
+  nickname                 / varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `index_users_on_email` (`email`),
+  UNIQUE KEY `index_users_on_reset_password_token` (`reset_password_token`)
+
+
+##groups
+  id          / int(11) NOT NULL AUTO_INCREMENT,
+  group_name  / text NOT NULL
+  user_id     / int NOT NULL
+  created_at  / datetime NOT NULL,
+  updated_at  / datetime NOT NULL,
+
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+
+##messages
+  id          / int(11) NOT NULL AUTO_INCREMENT,
+  message_txt / text
+  image_url   / text
+  user_id     / int NOT NULL
+  group_id    / int NOT NULL
+  created_at  / datetime NOT NULL,
+  updated_at  / datetime NOT NULL,
+
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+  FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`)
+
+
+
+
