@@ -1,4 +1,4 @@
-== README  
+== README
   
 <tt>rake doc:app</tt>  
   
