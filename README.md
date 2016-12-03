@@ -1,6 +1,6 @@
 == README
 
-<tt>rake doc:app</tt>.
+<tt>rake doc:app</tt>
 
 # Database_design
 
