@@ -31,6 +31,7 @@ Please feel free to use a different markup language if you do not plan to run --
 
 ## users(use gem device)
   id                       / int(11) NOT NULL AUTO_INCREMENT,
+  nickname                 / varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   email                    / varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   encrypted_password       / varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   reset_password_token     / varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -43,7 +44,6 @@ Please feel free to use a different markup language if you do not plan to run --
   last_sign_in_ip          / varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   created_at               / datetime NOT NULL,
   updated_at               / datetime NOT NULL,
-  nickname                 / varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
 
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_users_on_email` (`email`),
