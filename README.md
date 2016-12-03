@@ -54,7 +54,7 @@ Please feel free to use a different markup language if you do not plan to run --
 ##groups
   id          / int(11) NOT NULL AUTO_INCREMENT,
   group_name  / text NOT NULL
-  user_id     / int NOT NULL
+  user_id     / references NOT NULL
   created_at  / datetime NOT NULL,
   updated_at  / datetime NOT NULL,
 
@@ -65,8 +65,8 @@ Please feel free to use a different markup language if you do not plan to run --
   id          / int(11) NOT NULL AUTO_INCREMENT,
   message_txt / text
   image_url   / text
-  user_id     / int NOT NULL
-  group_id    / int NOT NULL
+  user_id     / references NOT NULL
+  group_id    / references NOT NULL
   created_at  / datetime NOT NULL,
   updated_at  / datetime NOT NULL,
 
