@@ -33,6 +33,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem "haml-rails", "~> 0.9"
+#http://qiita.com/masarufuruya/items/f8e2fe357ebbac0359d6
+
+gem "font-awesome-rails"
+#http://qiita.com/succi0303/items/7f76d53ebe54dab41124
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
