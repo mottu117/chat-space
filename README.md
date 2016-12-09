@@ -29,7 +29,7 @@
   * UNIQUE KEY `index_users_on_reset_password_token` (`reset_password_token`)  
 ~~~  
 
-## users_groups (中間テーブル)  
+## groups_users (中間テーブル。ネーミングはアルファベット順)  
 ~~~
   * id          / int(11) NOT NULL AUTO_INCREMENT,  
   * user_id     / references NOT NULL  
