@@ -21,7 +21,7 @@
 ~~~
   * has_many :users_groups
   * has_many :groups, through: :users_groups
-  * has_many :massage
+  * has_many :messages
 ~~~
 ~~~
   * PRIMARY KEY (`id`),  
@@ -77,8 +77,8 @@
 ~~~
   ***
 ~~~
-  * belongs_to :users
-  * belongs_to :groups
+  * belongs_to :user
+  * belongs_to :group
 ~~~
 ~~~
   * PRIMARY KEY (`id`),  
