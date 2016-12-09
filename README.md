@@ -1,8 +1,5 @@
 # Database_design  
 
-has_many :comments
-belongs_to :user
-
 ## users(use gem device)  
 ~~~
   * id                       / int(11) NOT NULL AUTO_INCREMENT|  
@@ -23,6 +20,8 @@ belongs_to :user
   ***
 ~~~
   * has_many :users_groups
+  * has_many :groups, through: :users_groups
+  * has_many :messages
 ~~~
 ~~~
   * PRIMARY KEY (`id`),  
@@ -30,7 +29,7 @@ belongs_to :user
   * UNIQUE KEY `index_users_on_reset_password_token` (`reset_password_token`)  
 ~~~  
 
-## users_groups (中間テーブル)  
+## groups_users (中間テーブル。ネーミングはアルファベット順)  
 ~~~
   * id          / int(11) NOT NULL AUTO_INCREMENT,  
   * user_id     / references NOT NULL  
@@ -40,9 +39,8 @@ belongs_to :user
 ~~~  
   ***
 ~~~
-  * has_many :groups
-  * has_many :messages
   * belongs_to :user
+  * belongs_to :group
 ~~~
 ~~~
   * PRIMARY KEY (`id`),  
@@ -59,7 +57,9 @@ belongs_to :user
 ~~~  
   ***
 ~~~
-  * belongs_to :user_group
+  * has_many :users_groups
+  * has_many :users, through: :users_groups
+  * has_many :messages
 ~~~
 ~~~
   * PRIMARY KEY (`id`)
@@ -77,7 +77,8 @@ belongs_to :user
 ~~~
   ***
 ~~~
-  * belongs_to :user_group
+  * belongs_to :user
+  * belongs_to :group
 ~~~
 ~~~
   * PRIMARY KEY (`id`),  
