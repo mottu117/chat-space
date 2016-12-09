@@ -1,0 +1,168 @@
+.hide_info_bar {
+    background-color: #38aef0;
+    color: #fff;
+    text-align: center;
+}
+
+.chat {
+    height: 100vh;
+    min-width: 980px;
+    clear: both;
+
+    &__side-bar {
+        background-color: #2f3e51;
+        float: left;
+        height: 100%;
+        min-width: 300px;
+
+        &__info {
+            background-color: #253141;
+            height: 60px;
+            padding: 20px;
+
+            &__user-name {
+                float: left;
+
+                &--text {
+                    color: #fff;
+                    line-height: 60px;
+                    letter-spacing: 2px;
+                    font-size: 16px;
+                    font-weight: bolder;
+                }
+            }
+
+            &__user-action {
+                height: 60px;
+                width: 60px;
+                float: right;
+
+                &--button-deco {
+                    display: inline-block;
+                    margin: 15px 0 15px 3px;
+                    line-height: 28px;
+                    color: #fff;
+                    font-size: 20px;
+                }
+            }
+        }
+
+        &__group-list {
+            overflow-y: scroll;
+            padding: 0 20px;
+
+            &__groups-ul {
+                color: #fff;
+
+                &__groups-li {
+                    padding: 20px 0 40px;
+
+                    &--groupname {
+                        font-size: 15px;
+                        margin-bottom: 10px;
+                    }
+
+                    &--new-message {
+                        font-size: 11px;
+                    }
+                }
+            }
+        }
+    }
+
+    &__main {
+        float: left;
+        height: 100%;
+        position: relative;
+        width: calc(100% - 300px);
+
+        &__info {
+            background-color: #fff;
+            height: 100px;
+            order-bottom: 1px solid #eee;
+            padding: 0 40px;
+
+            &__group-info {
+                padding-top: 20px;
+                float: left;
+
+                &--group-name {
+                    font-size: 20px;
+                    color: #333;
+                    margin-bottom: 15px;
+                }
+
+                &--menbers-rabel {
+                    font-size: 12px;
+                    color: #999;
+                    margin-right: 10px;
+                }
+
+                &--menbers-name {
+                    font-size: 12px;
+                    color: #999;
+                }
+            }
+
+            &__edit-form {
+                float: right;
+
+                &--button {
+                    display: inline-block;
+                    margin: 28px 0;
+                    padding-right: 20px;
+                    padding-left: 20px;
+                    line-height: 40px;
+                    color: #38aef0;
+                    font-size: 14px;
+                    border: 2px solid;
+                    text-decoration: none;
+                }
+            }
+        }
+
+        &__contents {
+            background-color: #fafafa;
+            position: relative;
+            height: calc(100% - 190px);
+            overflow-y: scroll;
+            padding: 0 40px;
+
+            &__chat-ul {
+                &__chat-li {
+                    padding: 46px 0 40px;
+
+                    &--userinfo {
+                        &--username {
+                            color: #434a54;
+                            font-size: 16px;
+                            margin: 0 10px 10px 0;
+                            font-weight: bold;
+
+                        }
+
+                        &--datetime {
+                            color: #999;
+                            font-size: 12px;
+                        }
+
+                        &--use-message {
+                            color: #434a54;
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+
+        &__inputform {
+            background-color: #ddd;
+            bottom: 0;
+            height: 90px;
+            position: absolute;
+            right: 0;
+            width: 100%;
+            padding: 20px 40px;
+        }
+    }
+}
