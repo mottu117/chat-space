@@ -52,5 +52,13 @@
           %p.chat__main__contents__chat-ul__chat-li--userinfo--message new-message
 
 
-    %chat__main__contents__inputform
-      = f.text_field_tag 'isbn', @book.isbn
+    %div.chat__main__inputform
+      = form_for(@User = "dummy") do |f|
+        %div.chat__main__inputform__text
+          = f.text_area :text, row: "1", placeholder: "type a message", class: "chat__main__inputform__text--text"
+          %label.chat__main__inputform__text--image_label
+            %input.chat__main__inputform__text--image_label--input{ type: 'file', name: 'message[image]' }
+            %i.chat__main__inputform__text--image_label--input-deco.fa.fa-image
+
+        %div.chat__main__inputform__button
+        = f.submit "Send", class: "chat__main__inputform__button--button"
