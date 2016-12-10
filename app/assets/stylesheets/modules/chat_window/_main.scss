@@ -5,9 +5,9 @@
     width: calc(100% - 300px);
 
     &__info {
-        background-color: #fff;
+        background-color: $color-n_white;
         height: 100px;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid $color-border_gray;
         padding: 0 40px;
 
         &__group-info {
@@ -16,19 +16,19 @@
 
             &--group-name {
                 font-size: 20px;
-                color: #333;
+                color: $color-font-large_black;
                 margin-bottom: 15px;
             }
 
             &--menbers-rabel {
                 font-size: 12px;
-                color: #999;
+                color: $color-font_l_gray;
                 margin-right: 10px;
             }
 
             &--menbers-name {
                 font-size: 12px;
-                color: #999;
+                color: $color-font_l_gray;
             }
         }
 
@@ -41,7 +41,7 @@
                 padding-right: 20px;
                 padding-left: 20px;
                 line-height: 40px;
-                color: #38aef0;
+                color: $color-bg_blue;
                 font-size: 14px;
                 border: 2px solid;
                 text-decoration: none;
@@ -50,7 +50,7 @@
     }
 
     &__contents {
-        background-color: #fafafa;
+        background-color: $color-bg_l_gray;
         position: relative;
         height: calc(100% - 190px);
         overflow-y: scroll;
@@ -62,19 +62,19 @@
 
                 &--userinfo {
                     &--username {
-                        color: #434a54;
+                        color: $color-font_brack;
                         font-size: 16px;
                         margin: 0 10px 10px 0;
                         font-weight: bold;
                     }
 
                     &--datetime {
-                        color: #999;
+                        color: $color-font_l_gray;
                         font-size: 12px;
                     }
 
                     &--use-message {
-                        color: #434a54;
+                        color: $color-font_brack;
                         font-size: 14px;
                     }
                 }
@@ -83,7 +83,7 @@
     }
 
     &__inputform {
-        background-color: #ddd;
+        background-color: $color-bg_gray;
         padding: 20px 40px;
         height: 49px;
 
@@ -126,7 +126,7 @@
             }
         }
 
-        &__button {
+        &__button-div {
             float: right;
 
             &--button {
@@ -134,8 +134,8 @@
                 width: 100px;
                 margin-left: 20px;
                 line-height: 50px;
-                color: #fff;
-                background-color: #38aef0;
+                color: $color-n_white;
+                background-color: $color-bg_blue;
                 text-align: center;
                 border: none;
                 padding: 0;

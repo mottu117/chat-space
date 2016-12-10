@@ -1,11 +1,11 @@
 .chat__side-bar {
-    background-color: #2f3e51;
+    background-color: $color-bg_l_cobalt;
     float: left;
     height: 100%;
     min-width: 300px;
 
     &__info {
-        background-color: #253141;
+        background-color: $color-bg_cobalt;
         height: 60px;
         padding: 20px;
 
@@ -13,7 +13,7 @@
             float: left;
 
             &--text {
-                color: #fff;
+                color: $color-n_white;
                 line-height: 60px;
                 letter-spacing: 2px;
                 font-size: 16px;
@@ -30,7 +30,7 @@
                 display: inline-block;
                 margin: 15px 0 15px 3px;
                 line-height: 28px;
-                color: #fff;
+                color: $color-n_white;
                 font-size: 20px;
             }
         }
@@ -41,7 +41,7 @@
         padding: 0 20px;
 
         &__groups-ul {
-            color: #fff;
+            color: $color-n_white;
 
             &__groups-li {
                 padding: 20px 0 40px;
