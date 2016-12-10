@@ -1,0 +1,9 @@
+@import './modules/chat_window/hide_info_bar';
+
+.chat {
+    height: 100vh;
+    min-width: 980px;
+    clear: both;
+    @import './modules/chat_window/side_bar';
+    @import './modules/chat_window/main';
+}
