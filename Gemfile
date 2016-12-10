@@ -23,6 +23,9 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'devise'
+# http://ruby-rails.hatenadiary.com/entry/20140801/1406907000
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -33,6 +36,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem "haml-rails", "~> 0.9"
+#http://qiita.com/masarufuruya/items/f8e2fe357ebbac0359d6
+
+gem "font-awesome-rails"
+#http://qiita.com/succi0303/items/7f76d53ebe54dab41124
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

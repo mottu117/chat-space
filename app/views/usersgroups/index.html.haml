@@ -1,0 +1,64 @@
+
+%div.hide_info_bar チャットグループが作成されました。
+
+%div.chat
+
+  %div.chat__side-bar
+
+    %div.chat__side-bar__info
+
+      %div.chat__side-bar__info__user-name
+        %h5.chat__side-bar__info__user-name--text user-name
+
+      %div.chat__side-bar__info__user-action
+        %i.chat__side-bar__info__user-action--button-deco.fa.fa-pencil-square-o(aria-hidden="true")
+        %i.chat__side-bar__info__user-action--button-deco.fa.fa-cog(aria-hidden="true")
+
+    %div.chat__side-bar__group-list
+      %ul.chat__side-bar__group-list__groups-ul
+        %li.chat__side-bar__group-list__groups-ul__groups-li
+          %p.chat__side-bar__group-list__groups-ul__groups-li--groupname groupname
+          %p.chat__side-bar__group-list__groups-ul__groups-li--new-message new-message
+
+
+        %li.chat__side-bar__group-list__groups-ul__groups-li
+          %p.chat__side-bar__group-list__groups-ul__groups-li--groupname groupname
+          %p.chat__side-bar__group-list__groups-ul__groups-li--new-message new-message
+
+
+  %div.chat__main
+
+    %div.chat__main__info
+
+      %div.chat__main__info__group-info
+        %p.chat__main__info__group-info--group-name groupname
+        %span.chat__main__info__group-info--menbers-rabel Menbers:
+        %span.chat__main__info__group-info--menbers-name you you you
+
+      %div.chat__main__info__edit-form
+        = link_to "Edit", "/", class: "chat__main__info__edit-form--button"
+
+
+    %div.chat__main__contents
+      %ul.chat__main__contents__chat-ul
+        %li.chat__main__contents__chat-ul__chat-li
+          %span.chat__main__contents__chat-ul__chat-li--userinfo--username groupname
+          %span.chat__main__contents__chat-ul__chat-li--userinfo--datetime 00:00:00
+          %p.chat__main__contents__chat-ul__chat-li--userinfo--message new-message
+
+        %li.chat__main__contents__chat-ul__chat-li
+          %span.chat__main__contents__chat-ul__chat-li--userinfo--username groupname
+          %span.chat__main__contents__chat-ul__chat-li--userinfo--datetime 00:00:00
+          %p.chat__main__contents__chat-ul__chat-li--userinfo--message new-message
+
+
+    %div.chat__main__inputform
+      = form_for(@User = "dummy") do |f|
+        %div.chat__main__inputform__text
+          = f.text_area :text, row: "1", placeholder: "type a message", class: "chat__main__inputform__text--text"
+          %label.chat__main__inputform__text--image_label
+            %input.chat__main__inputform__text--image_label--input{ type: 'file', name: 'message[image]' }
+            %i.chat__main__inputform__text--image_label--input-deco.fa.fa-image
+
+        %div.chat__main__inputform__button-div
+        = f.submit "Send", class: "chat__main__inputform__button-div--button"
