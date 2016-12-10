@@ -12,7 +12,9 @@
 
       %div.chat__side-bar__info__user-action
         %i.chat__side-bar__info__user-action--button-deco.fa.fa-pencil-square-o(aria-hidden="true")
-        %i.chat__side-bar__info__user-action--button-deco.fa.fa-cog(aria-hidden="true")
+        = link_to "/users/edit" do
+          %span.chat__side-bar__info__user-action--button-deco.fa.fa-cog(aria-hidden="true")
+
 
     %div.chat__side-bar__group-list
       %ul.chat__side-bar__group-list__groups-ul
