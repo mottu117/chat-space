@@ -4,7 +4,10 @@
 @import './reset';
 
 //config
-@import 'config/colors';
+@import './config/colors';
+
+//vendor
+@import './vendor/user';
 
 //layout
 @import './modules/chat_window/hide_info_bar';
