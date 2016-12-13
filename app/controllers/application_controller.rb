@@ -10,8 +10,8 @@ class ApplicationController < ActionController::Base
             user_params.permit(:nickname)
         end
 
-        devise_parameter_sanitizer.permit(:edit) do |user_params|
-            user_params.permit(:nickname)
+        devise_parameter_sanitizer.permit(:account_update) do |user_params|
+            user_params.permit(:nickname,:current_password)
         end
 
     end
