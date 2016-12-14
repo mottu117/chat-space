@@ -9,7 +9,8 @@
         %h5.chat__side-bar__info__user-name--text user-name
 
       %div.chat__side-bar__info__user-action
-        %i.chat__side-bar__info__user-action--button-deco.fa.fa-pencil-square-o(aria-hidden="true")
+        = link_to "/groups/new" do
+          %span.chat__side-bar__info__user-action--button-deco.fa.fa-pencil-square-o(aria-hidden="true")
         = link_to "/users/edit" do
           %span.chat__side-bar__info__user-action--button-deco.fa.fa-cog(aria-hidden="true")
 
@@ -36,7 +37,7 @@
         %span.chat__main__info__group-info--menbers-name you you you
 
       %div.chat__main__info__edit-form
-        = link_to "Edit", "/", class: "chat__main__info__edit-form--button"
+        = link_to "Edit", "/groups/edit", class: "chat__main__info__edit-form--button"
 
 
     %div.chat__main__contents
