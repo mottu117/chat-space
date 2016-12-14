@@ -8,8 +8,12 @@
     = csrf_meta_tags
   %body
 
-    %div.hide_info_bar
-      = h(flash[:notice])
-      = h(flash[:alert])
+    - if flash[:alert] != nil
+      %div.flash_message--aleat
+        = h(flash[:alert])
+
+    - elsif flash[:notice] != nil
+      %div.flash_message--notice
+        = h(flash[:notice])
 
     = yield
