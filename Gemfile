@@ -41,6 +41,9 @@ gem "haml-rails", "~> 0.9"
 gem "font-awesome-rails"
 #http://qiita.com/succi0303/items/7f76d53ebe54dab41124
 
+gem 'erb2haml'
+#corp.en-japan.com
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

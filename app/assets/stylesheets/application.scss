@@ -6,11 +6,17 @@
 //config
 @import './config/colors';
 
+//mixin
+@import './mixin/clearfix';
+
 //vendor
 @import './vendor/user';
 
-//layout
+//layout-chat_window
 @import './modules/chat_window/hide_info_bar';
 @import './modules/chat_window/layout';
 @import './modules/chat_window/side_bar';
 @import './modules/chat_window/main';
+
+//layout-group_window
+@import './modules/group_window/group';
