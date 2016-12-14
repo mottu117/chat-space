@@ -7,4 +7,9 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
+
+    %div.hide_info_bar
+      = h(flash[:notice])
+      = h(flash[:alert])
+
     = yield

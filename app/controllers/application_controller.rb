@@ -10,9 +10,13 @@ class ApplicationController < ActionController::Base
             user_params.permit(:nickname)
         end
 
-        devise_parameter_sanitizer.permit(:edit) do |user_params|
-            user_params.permit(:nickname)
+        devise_parameter_sanitizer.permit(:account_update) do |user_params|
+            user_params.permit(:nickname,:current_password,:email)
         end
-
     end
+
+    def after_sign_out_path_for(resource)
+      "/users/sign_in"
+    end
+
 end
