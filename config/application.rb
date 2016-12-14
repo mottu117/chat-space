@@ -7,17 +7,19 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 module ChatSpace
-  class Application < Rails::Application
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
+    class Application < Rails::Application
+        # Settings in config/environments/* take precedence over those specified here.
+        # Application configuration should go into files in config/initializers
+        # -- all .rb files in that directory are automatically loaded.
 
-    config.generators do |g| #rails g ファイル生成抑制
-      g.helper false
-      g.assets false
-      g.test_framework false
-      g.stylesheets false
-      g.javascripts false
+        config.i18n.default_locale = :ja
+
+        config.generators do |g| # rails g ファイル生成抑制
+            g.helper false
+            g.assets false
+            g.test_framework false
+            g.stylesheets false
+            g.javascripts false
+        end
     end
-  end
 end

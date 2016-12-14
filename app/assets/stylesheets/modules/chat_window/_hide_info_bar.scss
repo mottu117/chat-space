@@ -1,5 +1,14 @@
-.hide_info_bar {
-    background-color: $color-bg_blue;
-    color: $color-n_white;
-    text-align: center;
+.flash_message {
+
+    &--aleat {
+        background-color: $color-bg_yellow;
+        color: $color-font_brack;
+        text-align: center;
+    }
+
+    &--notice {
+        background-color: $color-bg_blue;
+        color: $color-n_white;
+        text-align: center;
+    }
 }
