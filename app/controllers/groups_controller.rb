@@ -4,14 +4,18 @@ class GroupsController < ApplicationController
     end
 
 
-    def new
+     def new
+      @group = Group.new
+     end
 
-    end
-
-
-    def create
-      Group.create(group_name: params[:chat_group_name])
+     def create
+      @group = Group.new(group_params)
+      @group.save
       redirect_to root_path, notice: 'グループを作成しました。'
+     end
 
+     private
+     def group_params
+      params.require(:group).permit(:group_name, {user_ids: []})
+     end
     end
-end
