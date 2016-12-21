@@ -1,2 +1,0 @@
-class UsersgroupsController < ApplicationController
-end
