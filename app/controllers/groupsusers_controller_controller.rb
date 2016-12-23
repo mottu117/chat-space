@@ -1,2 +1,0 @@
-class GroupsusersControllerController < ApplicationController
-end
