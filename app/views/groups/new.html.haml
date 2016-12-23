@@ -8,27 +8,21 @@
         .chat-group-form__field--right
           = f.text_area :group_name, row: "1", placeholder: "グループ名を入力してください", id: "chat_group_name", class: "chat-group-form__input"
       .chat-group-form__field.clearfix
-        .chat-group-form__field--left
-          = f.label :チャットメンバーを追加, class: "chat-group-form__label", for: "chat_group_チャットメンバーを追加"
-        .chat-group-form__field--right
-          .chat-group-form__search.clearfix
-            -# = f.text_area :name,row: "1", placeholder: "追加したいユーザー名を入力してください", id: "chat_group_name", class: "chat-group-form__input"
-          #user-search-result
+        -# .chat-group-form__field--left
+        -#   = f.label :チャットメンバーを追加, class: "chat-group-form__label", for: "chat_group_チャットメンバーを追加"
+        -# .chat-group-form__field--right
+        -#   .chat-group-form__search.clearfix
+        -#  = f.text_area :name,row: "1", placeholder: "追加したいユーザー名を入力してください", id: "chat_group_name", class: "chat-group-form__input"
+        -#   #user-search-result
       .chat-group-form__field.clearfix
         .chat-group-form__field--left
           = f.label :チャットメンバー, class: "chat-group-form__label", for: "chat_group_チャットメンバー"
         .chat-group-form__field--right
           #chat-group-users
             #chat-group-user-22.chat-group-user.clearfix
-              -# = f.text_area :user_id,type: "hidden",value: "22"
-              %input{:name => "group[user_ids][]", :type => "hidden", :value => "1"}/
-              %p.chat-group-user__name seo_kyohei
+              = f.collection_check_boxes :user_ids, User.all, :id, :nickname do |b|
+                = b.check_box + b.label { b.text }
       .chat-group-form__field.clearfix
         .chat-group-form__field--left
         .chat-group-form__field--right
           = f.submit "Save", name: "commit", class: "chat-group-form__action-btn"
-
-%p
-  = debug params
-  nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
-  = debug @group

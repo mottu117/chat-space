@@ -6,6 +6,8 @@ class GroupsController < ApplicationController
 
      def new
       @group = Group.new
+      @current_user_id = current_user.id
+      @current_user_nickname = current_user.nickname
      end
 
      def create
@@ -16,6 +18,6 @@ class GroupsController < ApplicationController
 
      private
      def group_params
-      params.require(:group).permit(:group_name, {user_ids: []})
+      params.require(:group).permit(:group_name, :nickname, { user_ids:[] })
      end
     end
