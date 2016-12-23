@@ -5,4 +5,6 @@ class Group < ApplicationRecord
 
   accepts_nested_attributes_for :groups_users
 
+  validates :group_name, presence: true
+
 end
