@@ -1,23 +1,25 @@
 class GroupsController < ApplicationController
-    def edit
+    def edit; end
 
+    def new
+        @group = Group.new
     end
 
+    def create
+        @group = Group.new(group_params)
 
-     def new
-      @group = Group.new
-      @current_user_id = current_user.id
-      @current_user_nickname = current_user.nickname
-     end
+        if @group.save
+            redirect_to root_path, notice: 'グループを作成しました。'
 
-     def create
-      @group = Group.new(group_params)
-      @group.save
-      redirect_to root_path, notice: 'グループを作成しました。'
-     end
+        else
+            redirect_to root_path, alert: 'グループを作成できませんでした。'
 
-     private
-     def group_params
-      params.require(:group).permit(:group_name, :nickname, { user_ids:[] })
-     end
+        end
     end
+
+    private
+
+    def group_params
+        params.require(:group).permit(:group_name, user_ids: [])
+    end
+end
