@@ -25,6 +25,20 @@ class GroupsController < ApplicationController
     end
 
     def edit
+      @edit_target_group = Group.includes(:groups_users).find(group_edit_target_id)
+      # binding.pry
+    end
+
+    def update
+      @group = Group.find(group_edit_target_id)
+
+      if @group.update(group_params)
+          redirect_to root_path, notice: 'グループを編集しました。'
+
+      else
+          redirect_to root_path, alert: 'グループを編集できませんでした。'
+
+      end
 
     end
 
@@ -35,4 +49,9 @@ class GroupsController < ApplicationController
     def group_params
         params.require(:group).permit(:group_name, user_ids: [])
     end
+
+    def group_edit_target_id
+        params.require(:id)
+    end
+
 end
