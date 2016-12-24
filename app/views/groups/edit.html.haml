@@ -1,7 +1,7 @@
 .chat-group-form
   %h1 チャットグループ編集
   %div#edit_chat_group_22.edit_chat_group
-    = form_for @edit_target_group, action: "group#update" do |f|
+    = form_for @edit_target_group do |f|
       .chat-group-form__field.clearfix
         .chat-group-form__field--left
           = f.label :グループ名, class: "chat-group-form__label"
