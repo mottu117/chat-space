@@ -1,12 +1,5 @@
 class GroupsController < ApplicationController
-
-    def index
-        @find_id = "86"
-        @group_sample_name = Group.find(@find_id)
-        @group_sample_member = GroupsUser.where(groups_users: {group_id: @find_id} )
-        @user_joined_group_lists = Group.includes(:groups_users).where(groups_users: {user_id: current_user.id} )
-        # binding.pry
-    end
+    before_action :get_edit_target_group, only: [:edit, :update]
 
     def new
         @group = Group.new
@@ -25,24 +18,19 @@ class GroupsController < ApplicationController
     end
 
     def edit
-      @edit_target_group = Group.includes(:groups_users).find(group_edit_target_id)
-      # binding.pry
+        # before_actionにより対象データを事前取得してある。
     end
 
     def update
-      @group = Group.find(group_edit_target_id)
+        # before_actionにより対象データを事前取得してある。
+        if @edit_target_group.update(group_params)
+            redirect_to root_path, notice: 'グループを編集しました。'
 
-      if @group.update(group_params)
-          redirect_to root_path, notice: 'グループを編集しました。'
+        else
+            redirect_to root_path, alert: 'グループを編集できませんでした。'
 
-      else
-          redirect_to root_path, alert: 'グループを編集できませんでした。'
-
-      end
-
+        end
     end
-
-
 
     private
 
@@ -50,8 +38,7 @@ class GroupsController < ApplicationController
         params.require(:group).permit(:group_name, user_ids: [])
     end
 
-    def group_edit_target_id
-        params.require(:id)
+    def get_edit_target_group
+        @edit_target_group = Group.includes(:groups_users).find(params[:id])
     end
-
 end
