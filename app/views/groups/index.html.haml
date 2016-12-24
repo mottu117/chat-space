@@ -16,15 +16,7 @@
 
 
     %div.chat__side-bar__group-list
-      %ul.chat__side-bar__group-list__groups-ul
-        %li.chat__side-bar__group-list__groups-ul__groups-li
-          %p.chat__side-bar__group-list__groups-ul__groups-li--groupname groupname
-          %p.chat__side-bar__group-list__groups-ul__groups-li--new-message new-message
-
-
-        %li.chat__side-bar__group-list__groups-ul__groups-li
-          %p.chat__side-bar__group-list__groups-ul__groups-li--groupname groupname
-          %p.chat__side-bar__group-list__groups-ul__groups-li--new-message new-message
+      = render template: "groups/show"
 
 
   %div.chat__main
@@ -41,16 +33,7 @@
 
 
     %div.chat__main__contents
-      %ul.chat__main__contents__chat-ul
-        %li.chat__main__contents__chat-ul__chat-li
-          %span.chat__main__contents__chat-ul__chat-li--userinfo--username groupname
-          %span.chat__main__contents__chat-ul__chat-li--userinfo--datetime 00:00:00
-          %p.chat__main__contents__chat-ul__chat-li--userinfo--message new-message
-
-        %li.chat__main__contents__chat-ul__chat-li
-          %span.chat__main__contents__chat-ul__chat-li--userinfo--username groupname
-          %span.chat__main__contents__chat-ul__chat-li--userinfo--datetime 00:00:00
-          %p.chat__main__contents__chat-ul__chat-li--userinfo--message new-message
+      = render template: "messeges/show"
 
 
     %div.chat__main__inputform
