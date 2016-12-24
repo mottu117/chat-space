@@ -10,55 +10,58 @@
           = current_user.nickname
 
       %div.chat__side-bar__info__user-action
-        = link_to "/groups/new" do
+        = link_to new_group_path do
           %span.chat__side-bar__info__user-action--button-deco.fa.fa-pencil-square-o(aria-hidden="true")
-        = link_to "/users/edit" do
+        = link_to  edit_user_registration_path do
           %span.chat__side-bar__info__user-action--button-deco.fa.fa-cog(aria-hidden="true")
 
 
     %div.chat__side-bar__group-list
       %div.chat__side-bar__group-list
         %ul.chat__side-bar__group-list__groups-ul
-          - @user_joined_group_lists.each do |ujgl|
-            %li.chat__side-bar__group-list__groups-ul__groups-li
-              %p.chat__side-bar__group-list__groups-ul__groups-li--groupname
-                = ujgl.group_name
-              %p.chat__side-bar__group-list__groups-ul__groups-li--new-message
-                - if ujgl.group_name
-                  = ujgl.group_name #仮置き。あとでメッセージの呼び出しに変更
-                - else
-                  まだメッセージはありません
+          - @user_joined_group_lists.each do |u|
+            = link_to group_messeges_path(u.id), class: "chat__side-bar__group-list__groups-ul--links" do
+              %li.chat__side-bar__group-list__groups-ul__groups-li
+                %p.chat__side-bar__group-list__groups-ul__groups-li--groupname
+                  = u.group_name
+                %p.chat__side-bar__group-list__groups-ul__groups-li--new-message
+                  - if u.group_name
+                    = u.group_name #仮置き。あとでメッセージの呼び出しに変更
+                  - else
+                    まだメッセージはありません
 
 
   %div.chat__main
 
     %div.chat__main__info
+      - if @group_name
+        %div.chat__main__info__group-info
+          %p.chat__main__info__group-info--group-name
+            = @group_name.group_name
+          %span.chat__main__info__group-info--menbers-rabel Menbers:
+          - @group_member.each do |g|
+            %span.chat__main__info__group-info--menbers-name
+              = g.user_id
 
-      %div.chat__main__info__group-info
-        %p.chat__main__info__group-info--group-name
-          = @group_sample_name.group_name #仮置き。あとでサイドメニュー連動の呼び出しに変更
-        %span.chat__main__info__group-info--menbers-rabel Menbers:
-        - @group_sample_member.each do |gsm|
-          %span.chat__main__info__group-info--menbers-name
-            = gsm.user_id
-
-      %div.chat__main__info__edit-form
-        = link_to "Edit", "/groups/#{@find_id}/edit", class: "chat__main__info__edit-form--button"
+        %div.chat__main__info__edit-form
+          = link_to "Edit", edit_group_path(@find_id), class: "chat__main__info__edit-form--button"
 
 
     %div.chat__main__contents
-      %div.chat__main__contents
-        %ul.chat__main__contents__chat-ul
-          %li.chat__main__contents__chat-ul__chat-li
-            %span.chat__main__contents__chat-ul__chat-li--userinfo--username groupname
-            %span.chat__main__contents__chat-ul__chat-li--userinfo--datetime 00:00:00
-            %p.chat__main__contents__chat-ul__chat-li--userinfo--message new-message
+      - if @group_name
+        %div.chat__main__contents
+          %ul.chat__main__contents__chat-ul
+            %li.chat__main__contents__chat-ul__chat-li
+              %span.chat__main__contents__chat-ul__chat-li--userinfo--username groupname
+              %span.chat__main__contents__chat-ul__chat-li--userinfo--datetime 00:00:00
+              %p.chat__main__contents__chat-ul__chat-li--userinfo--message new-message
 
-          %li.chat__main__contents__chat-ul__chat-li
-            %span.chat__main__contents__chat-ul__chat-li--userinfo--username groupname
-            %span.chat__main__contents__chat-ul__chat-li--userinfo--datetime 00:00:00
-            %p.chat__main__contents__chat-ul__chat-li--userinfo--message new-message
-
+            %li.chat__main__contents__chat-ul__chat-li
+              %span.chat__main__contents__chat-ul__chat-li--userinfo--username groupname
+              %span.chat__main__contents__chat-ul__chat-li--userinfo--datetime 00:00:00
+              %p.chat__main__contents__chat-ul__chat-li--userinfo--message new-message
+      - else
+        %p グループを作成するか、選択してください。
 
 
     %div.chat__main__inputform
