@@ -6,7 +6,8 @@
     %div.chat__side-bar__info
 
       %div.chat__side-bar__info__user-name
-        %h5.chat__side-bar__info__user-name--text user-name
+        %h5.chat__side-bar__info__user-name--text
+          = current_user.nickname
 
       %div.chat__side-bar__info__user-action
         = link_to "/groups/new" do
@@ -16,7 +17,17 @@
 
 
     %div.chat__side-bar__group-list
-      = render template: "groups/show"
+      %div.chat__side-bar__group-list
+        %ul.chat__side-bar__group-list__groups-ul
+          - @user_joined_group_lists.each do |ujgl|
+            %li.chat__side-bar__group-list__groups-ul__groups-li
+              %p.chat__side-bar__group-list__groups-ul__groups-li--groupname
+                = ujgl.group_name
+              %p.chat__side-bar__group-list__groups-ul__groups-li--new-message
+                - if ujgl.group_name
+                  = ujgl.group_name #仮置き。あとでメッセージの呼び出しに変更
+                - else
+                  まだメッセージはありません
 
 
   %div.chat__main
@@ -24,12 +35,15 @@
     %div.chat__main__info
 
       %div.chat__main__info__group-info
-        %p.chat__main__info__group-info--group-name groupname
+        %p.chat__main__info__group-info--group-name
+          = @group_sample_name.group_name #仮置き。あとでサイドメニュー連動の呼び出しに変更
         %span.chat__main__info__group-info--menbers-rabel Menbers:
-        %span.chat__main__info__group-info--menbers-name you you you
+        - @group_sample_member.each do |gsm|
+          %span.chat__main__info__group-info--menbers-name
+            = gsm.user_id
 
       %div.chat__main__info__edit-form
-        = link_to "Edit", "/groups/edit", class: "chat__main__info__edit-form--button"
+        = link_to "Edit", "/groups/#{@find_id}/edit", class: "chat__main__info__edit-form--button"
 
 
     %div.chat__main__contents

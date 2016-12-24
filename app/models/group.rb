@@ -7,4 +7,6 @@ class Group < ApplicationRecord
 
   validates :group_name, presence: true
 
+  Group.includes(:groups_users)
+
 end
