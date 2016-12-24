@@ -14,6 +14,8 @@ module ChatSpace
 
         config.i18n.default_locale = :ja
 
+        config.time_zone = 'Tokyo'
+
         config.generators do |g| # rails g ファイル生成抑制
             g.helper false
             g.assets false
