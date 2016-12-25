@@ -19,14 +19,14 @@
     %div.chat__side-bar__group-list
       %div.chat__side-bar__group-list
         %ul.chat__side-bar__group-list__groups-ul
-          - @user_joined_group_lists.each do |u|
-            = link_to group_messeges_path(u.id), class: "chat__side-bar__group-list__groups-ul--links" do
+          - @user_joined_group_lists.each do |user_joined_group_lists|
+            = link_to group_messeges_path(user_joined_group_lists.id), class: "chat__side-bar__group-list__groups-ul--links" do
               %li.chat__side-bar__group-list__groups-ul__groups-li
                 %p.chat__side-bar__group-list__groups-ul__groups-li--groupname
-                  = u.group_name
+                  = user_joined_group_lists.group_name
                 %p.chat__side-bar__group-list__groups-ul__groups-li--new-message
-                  - if u.group_name
-                    = u.group_name
+                  - if user_joined_group_lists.group_name
+                    = user_joined_group_lists.group_name
                   - else
                     まだメッセージはありません
 
@@ -39,9 +39,9 @@
           %p.chat__main__info__group-info--group-name
             = @group_name.group_name
           %span.chat__main__info__group-info--menbers-rabel Menbers:
-          - @group_member.each do |g|
+          - @group_member.each do |group_member|
             %span.chat__main__info__group-info--menbers-name
-              = g.user_id
+              = group_member.user_id
 
         %div.chat__main__info__edit-form
           = link_to "Edit", edit_group_path(@find_id), class: "chat__main__info__edit-form--button"

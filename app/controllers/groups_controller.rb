@@ -7,13 +7,10 @@ class GroupsController < ApplicationController
 
     def create
         @group = Group.new(group_params)
-
         if @group.save
             redirect_to root_path, notice: 'グループを作成しました。'
-
         else
             redirect_to root_path, alert: 'グループを作成できませんでした。'
-
         end
     end
 
@@ -25,10 +22,8 @@ class GroupsController < ApplicationController
         # before_actionにより対象データを事前取得してある。
         if @edit_target_group.update(group_params)
             redirect_to root_path, notice: 'グループを編集しました。'
-
         else
             redirect_to root_path, alert: 'グループを編集できませんでした。'
-
         end
     end
 
