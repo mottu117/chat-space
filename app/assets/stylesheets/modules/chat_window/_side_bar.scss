@@ -1,5 +1,4 @@
 .chat__side-bar {
-    // @include linkstyle_none();
     background-color: $color-bg_l_cobalt;
     float: left;
     height: 100%;
@@ -48,7 +47,7 @@
               text-decoration: none;
 
             }
-            
+
             &__groups-li {
 
                 padding: 20px 0 40px;
