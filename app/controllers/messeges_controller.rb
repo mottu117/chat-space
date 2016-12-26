@@ -1,9 +1,6 @@
 class MessegesController < ApplicationController
-
     def index
-        @user_joined_group_lists = appfunc_get_user_joined_group_lists #application_controllerより継承
-        @find_id = params[:group_id]
-        @group_info = Group.find(@find_id)
+        @current_user_groups = appfunc_get_current_user_groups # application_controllerより継承
+        @group = Group.find(params[:group_id])
     end
-
 end
