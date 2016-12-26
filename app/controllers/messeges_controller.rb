@@ -1,12 +1,9 @@
 class MessegesController < ApplicationController
-    before_action :authenticate_user!
 
     def index
-        @user_joined_group_lists = Group.includes(:groups_users).where(groups_users: {user_id: current_user.id} )
+        @user_joined_group_lists = appfunc_get_user_joined_group_lists #application_controllerより継承
         @find_id = params[:group_id]
-        if @find_id
-          @group_info = Group.find(@find_id)
-        end
+        @group_info = Group.find(@find_id)
     end
 
 end

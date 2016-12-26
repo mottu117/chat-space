@@ -1,0 +1,26 @@
+-# saサイドメニューの部分テンプレート massage#indexからも呼んでいる。
+%div.chat__side-bar__info
+
+  %div.chat__side-bar__info__user-name
+    %h5.chat__side-bar__info__user-name--text
+      = current_user.nickname
+
+  %div.chat__side-bar__info__user-action
+    = link_to new_group_path do
+      %span.chat__side-bar__info__user-action--button-deco.fa.fa-pencil-square-o(aria-hidden="true")
+    = link_to  edit_user_registration_path do
+      %span.chat__side-bar__info__user-action--button-deco.fa.fa-cog(aria-hidden="true")
+
+%div.chat__side-bar__group-list
+  %div.chat__side-bar__group-list
+    %ul.chat__side-bar__group-list__groups-ul
+      - @user_joined_group_lists.each do |user_joined_group|
+        = link_to group_messeges_path(user_joined_group.id), class: "chat__side-bar__group-list__groups-ul--links" do
+          %li.chat__side-bar__group-list__groups-ul__groups-li
+            %p.chat__side-bar__group-list__groups-ul__groups-li--groupname
+              = user_joined_group.group_name
+            %p.chat__side-bar__group-list__groups-ul__groups-li--new-message
+              - if user_joined_group.group_name
+                = user_joined_group.group_name
+              - else
+                まだメッセージはありません

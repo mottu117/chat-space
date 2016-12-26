@@ -2,66 +2,36 @@
 %div.chat
 
   %div.chat__side-bar
-
-    %div.chat__side-bar__info
-
-      %div.chat__side-bar__info__user-name
-        %h5.chat__side-bar__info__user-name--text
-          = current_user.nickname
-
-      %div.chat__side-bar__info__user-action
-        = link_to new_group_path do
-          %span.chat__side-bar__info__user-action--button-deco.fa.fa-pencil-square-o(aria-hidden="true")
-        = link_to  edit_user_registration_path do
-          %span.chat__side-bar__info__user-action--button-deco.fa.fa-cog(aria-hidden="true")
-
-
-    %div.chat__side-bar__group-list
-      %div.chat__side-bar__group-list
-        %ul.chat__side-bar__group-list__groups-ul
-          - @user_joined_group_lists.each do |user_joined_group|
-            = link_to group_messeges_path(user_joined_group.id), class: "chat__side-bar__group-list__groups-ul--links" do
-              %li.chat__side-bar__group-list__groups-ul__groups-li
-                %p.chat__side-bar__group-list__groups-ul__groups-li--groupname
-                  = user_joined_group.group_name
-                %p.chat__side-bar__group-list__groups-ul__groups-li--new-message
-                  - if user_joined_group.group_name
-                    = user_joined_group.group_name
-                  - else
-                    まだメッセージはありません
+    = render partial: "shered/side"
 
 
   %div.chat__main
 
     %div.chat__main__info
-      - if @group_info
-        %div.chat__main__info__group-info
-          %p.chat__main__info__group-info--group-name
-            = @group_info.group_name
-          %span.chat__main__info__group-info--menbers-rabel Menbers:
-          - @group_info.groups_users.each do |group_member|
-            %span.chat__main__info__group-info--menbers-name
-              = group_member.user_id
+      %div.chat__main__info__group-info
+        %p.chat__main__info__group-info--group-name
+          = @group_info.group_name
+        %span.chat__main__info__group-info--menbers-rabel Menbers:
+        - @group_info.groups_users.each do |group_member|
+          %span.chat__main__info__group-info--menbers-name
+            = group_member.user_id
 
-        %div.chat__main__info__edit-form
-          = link_to "Edit", edit_group_path(@find_id), class: "chat__main__info__edit-form--button"
+      %div.chat__main__info__edit-form
+        = link_to "Edit", edit_group_path(@find_id), class: "chat__main__info__edit-form--button"
 
 
     %div.chat__main__contents
-      - if @group_info
-        %div.chat__main__contents
-          %ul.chat__main__contents__chat-ul
-            %li.chat__main__contents__chat-ul__chat-li
-              %span.chat__main__contents__chat-ul__chat-li--userinfo--username groupname
-              %span.chat__main__contents__chat-ul__chat-li--userinfo--datetime 00:00:00
-              %p.chat__main__contents__chat-ul__chat-li--userinfo--message new-message
+      %div.chat__main__contents
+        %ul.chat__main__contents__chat-ul
+          %li.chat__main__contents__chat-ul__chat-li
+            %span.chat__main__contents__chat-ul__chat-li--userinfo--username groupname
+            %span.chat__main__contents__chat-ul__chat-li--userinfo--datetime 00:00:00
+            %p.chat__main__contents__chat-ul__chat-li--userinfo--message new-message
 
-            %li.chat__main__contents__chat-ul__chat-li
-              %span.chat__main__contents__chat-ul__chat-li--userinfo--username groupname
-              %span.chat__main__contents__chat-ul__chat-li--userinfo--datetime 00:00:00
-              %p.chat__main__contents__chat-ul__chat-li--userinfo--message new-message
-      - else
-        %p グループを作成するか、選択してください。
+          %li.chat__main__contents__chat-ul__chat-li
+            %span.chat__main__contents__chat-ul__chat-li--userinfo--username groupname
+            %span.chat__main__contents__chat-ul__chat-li--userinfo--datetime 00:00:00
+            %p.chat__main__contents__chat-ul__chat-li--userinfo--message new-message
 
 
     %div.chat__main__inputform

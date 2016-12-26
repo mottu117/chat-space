@@ -1,6 +1,10 @@
 class GroupsController < ApplicationController
     before_action :get_edit_target_group, only: [:edit, :update]
 
+    def index
+        @user_joined_group_lists = appfunc_get_user_joined_group_lists #application_controllerより継承
+    end
+
     def new
         @group = Group.new
     end
