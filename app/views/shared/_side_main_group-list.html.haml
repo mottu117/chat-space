@@ -1,0 +1,10 @@
+- contents.each do |current_user_group|
+  = link_to group_messeges_path(current_user_group.id), class: "chat__side-bar__group-list__groups-ul--links" do
+    %li.chat__side-bar__group-list__groups-ul__groups-li
+      %p.chat__side-bar__group-list__groups-ul__groups-li--groupname
+        = current_user_group.group_name
+      %p.chat__side-bar__group-list__groups-ul__groups-li--new-message
+        - if current_user_group.group_name
+          = current_user_group.group_name
+        - else
+          まだメッセージはありません

@@ -14,4 +14,4 @@
 %div.chat__side-bar__group-list
   %div.chat__side-bar__group-list
     %ul.chat__side-bar__group-list__groups-ul
-      = render partial: "shered/side_main_group-list" #@user_joined_group_listsを受け取ってeach-doする。
+      = render partial: "shared/side_main_group-list", locals: {contents: @current_user_groups} #ユーザが所属しているグループのリスト

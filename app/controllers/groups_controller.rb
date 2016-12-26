@@ -1,8 +1,8 @@
 class GroupsController < ApplicationController
-    before_action :get_edit_target_group, only: [:edit, :update]
+    before_action :get_target_group, only: [:edit, :update]
 
     def index
-        @user_joined_group_lists = appfunc_get_user_joined_group_lists #application_controllerより継承
+        @current_user_groups = appfunc_get_current_user_groups # application_controllerより継承
     end
 
     def new
@@ -24,7 +24,7 @@ class GroupsController < ApplicationController
 
     def update
         # before_actionにより対象データを事前取得してある。
-        if @edit_target_group.update(group_params)
+        if @target_group.update(group_params)
             redirect_to root_path, notice: 'グループを編集しました。'
         else
             redirect_to root_path, alert: 'グループを編集できませんでした。'
@@ -37,7 +37,7 @@ class GroupsController < ApplicationController
         params.require(:group).permit(:group_name, user_ids: [])
     end
 
-    def get_edit_target_group
-        @edit_target_group = Group.find(params[:id])
+    def get_target_group
+        @target_group = Group.find(params[:id])
     end
 end
