@@ -38,6 +38,6 @@ class GroupsController < ApplicationController
     end
 
     def get_edit_target_group
-        @edit_target_group = Group.includes(:groups_users).find(params[:id])
+        @edit_target_group = Group.find(params[:id])
     end
 end
