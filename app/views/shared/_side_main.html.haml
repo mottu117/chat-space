@@ -1,4 +1,4 @@
--# saサイドメニューの部分テンプレート massage#indexからも呼んでいる。
+-# サイドメニューを担う部分テンプレート group#index,massage#indexから呼んでいる。
 %div.chat__side-bar__info
 
   %div.chat__side-bar__info__user-name
@@ -14,5 +14,4 @@
 %div.chat__side-bar__group-list
   %div.chat__side-bar__group-list
     %ul.chat__side-bar__group-list__groups-ul
-    - @current_user_groups.each do |current_user_group|
-      = render partial: "shared/side_main_group-list", locals: {contents: current_user_group} #ユーザが所属しているグループのリスト
+      =  render partial: "shared/side_main_group", collection: @current_user_groups, as:"current_user_group"
