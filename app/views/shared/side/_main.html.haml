@@ -7,11 +7,11 @@
 
   %div.chat__side-bar__info__user-action
     = link_to new_group_path do
-      %span.chat__side-bar__info__user-action--button-deco.fa.fa-pencil-square-o(aria-hidden="true")
+      %span.chat__side-bar__info__user-action--button-deco.fa.fa-pencil-square-o(aria-hidden = "true")
     = link_to  edit_user_registration_path do
-      %span.chat__side-bar__info__user-action--button-deco.fa.fa-cog(aria-hidden="true")
+      %span.chat__side-bar__info__user-action--button-deco.fa.fa-cog(aria-hidden = "true")
 
 %div.chat__side-bar__group-list
   %div.chat__side-bar__group-list
     %ul.chat__side-bar__group-list__groups-ul
-      =  render partial: "shared/side_main_group", collection: @current_user_groups, as:"current_user_group"
+      = render partial: "shared/side/group", collection: @current_user_groups, as: "current_user_group"

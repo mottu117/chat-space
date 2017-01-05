@@ -2,7 +2,7 @@
 %div.chat
 
   %div.chat__side-bar
-    = render partial: "shared/side_main"
+    = render partial: "shared/side/main"
 
 
   %div.chat__main
@@ -12,9 +12,7 @@
         %p.chat__main__info__group-info--group-name
           = @group.group_name
         %span.chat__main__info__group-info--menbers-rabel Menbers:
-        - @group.groups_users.each do |group_member|
-          %span.chat__main__info__group-info--menbers-name
-            = group_member.user_id
+        = render partial: "/shared/main/info_groupuser", collection: @group.groups_users, as: "groups_user"
 
       %div.chat__main__info__edit-form
         = link_to "Edit", edit_group_path(@group), class: "chat__main__info__edit-form--button"

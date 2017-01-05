@@ -4,7 +4,4 @@
     %p.chat__side-bar__group-list__groups-ul__groups-li--groupname
       = current_user_group.group_name
     %p.chat__side-bar__group-list__groups-ul__groups-li--new-message
-      - if current_user_group.group_name
-        = current_user_group.group_name
-      - else
-        まだメッセージはありません
+      = apphelper_show_text_boolean(current_user_group.group_name,"まだメッセージはありません")
