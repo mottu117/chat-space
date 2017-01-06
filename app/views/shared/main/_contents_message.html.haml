@@ -1,8 +1,8 @@
 -# メイン領域の、チャットメッセージを表示するテンプレート。
 %li.chat__main__contents__chat-ul__chat-li
   %span.chat__main__contents__chat-ul__chat-li--userinfo--username
-    = index_message.user.nickname
+    = message.user.nickname
   %span.chat__main__contents__chat-ul__chat-li--userinfo--datetime
-    = I18n.localize(index_message.created_at) #日付データを日本国書式に整形する
+    = I18n.localize(message.created_at) #日付データを日本国書式に整形する
   %p.chat__main__contents__chat-ul__chat-li--userinfo--message
-    = index_message.text
+    = message.text

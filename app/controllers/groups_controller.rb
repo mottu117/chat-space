@@ -14,7 +14,7 @@ class GroupsController < ApplicationController
         if @group.save
             redirect_to root_path, notice: 'グループを作成しました。'
         else
-            redirect_to root_path, alert: 'グループを作成できませんでした。'
+            redirect_to root_path, alert: 'グループを作成できませんでした。グループ名が未入力の可能性があります。'
         end
     end
 
@@ -27,7 +27,7 @@ class GroupsController < ApplicationController
         if @target_group.update(group_params)
             redirect_to root_path, notice: 'グループを編集しました。'
         else
-            redirect_to root_path, alert: 'グループを編集できませんでした。'
+            redirect_to root_path, alert: 'グループを編集できませんでした。グループ名が未入力の可能性があります。'
         end
     end
 
