@@ -41,9 +41,15 @@
         padding: 0 20px;
 
         &__groups-ul {
-            color: $color-n_white;
+
+            &--links{
+              color: $color-n_white;
+              text-decoration: none;
+
+            }
 
             &__groups-li {
+
                 padding: 20px 0 40px;
 
                 &--groupname {
