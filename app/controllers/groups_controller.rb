@@ -10,8 +10,8 @@ class GroupsController < ApplicationController
     end
 
     def create
-        @group = Group.new(group_params)
-        if @group.save
+        group = Group.new(group_params)
+        if group.save
             redirect_to root_path, notice: 'グループを作成しました。'
         else
             redirect_to root_path, alert: 'グループを作成できませんでした。グループ名が未入力の可能性があります。'

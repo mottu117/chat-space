@@ -6,8 +6,8 @@ class MessagesController < ApplicationController
     end
 
     def create
-        @input_message = Message.new(message_params)
-        if @input_message.save
+        message = Message.new(message_params)
+        if message.save(message_params)
             redirect_to group_messages_path, notice: 'メッセージを投稿しました。'
         else
             redirect_to group_messages_path, alert: 'メッセージを投稿できませんでした。テキストが未入力の可能性があります。'
