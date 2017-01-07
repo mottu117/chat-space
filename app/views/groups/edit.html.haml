@@ -1,4 +1,5 @@
 .chat-group-form
+  = grouphelper_show_error_data(@error_message)
   %h1 チャットグループ編集
   %div#edit_chat_group_22.edit_chat_group
     = form_for @target_group do |f|

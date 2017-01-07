@@ -1,4 +1,3 @@
-
 %div.chat
 
   %div.chat__side-bar
@@ -19,25 +18,20 @@
 
 
     %div.chat__main__contents
-      %div.chat__main__contents
-        %ul.chat__main__contents__chat-ul
-          %li.chat__main__contents__chat-ul__chat-li
-            %span.chat__main__contents__chat-ul__chat-li--userinfo--username groupname
-            %span.chat__main__contents__chat-ul__chat-li--userinfo--datetime 00:00:00
-            %p.chat__main__contents__chat-ul__chat-li--userinfo--message new-message
-
-          %li.chat__main__contents__chat-ul__chat-li
-            %span.chat__main__contents__chat-ul__chat-li--userinfo--username groupname
-            %span.chat__main__contents__chat-ul__chat-li--userinfo--datetime 00:00:00
-            %p.chat__main__contents__chat-ul__chat-li--userinfo--message new-message
+      %ul.chat__main__contents__chat-ul
+        = render partial: "/shared/main/contents_message", collection: @group.messages, as: "message"
 
 
     %div.chat__main__inputform
-      = form_for(@User = "dummy") do |f|
+      = form_for [@group, @message] do |f|
         %div.chat__main__inputform__text
+          -#以下text_areaでは、required: true を使用しない。
+          -#アラートメッセージが画面外にでてしまい、なぜ警告されるのかわからなくなる。
+          -#また、メッセージはユーザviewに対し絶対位置に表示されるので、
+          -# メッセージ表示後はスクロールしても画面内に入って来ない。かえって利便性を損なうと判断。
           = f.text_area :text, row: "1", placeholder: "type a message", class: "chat__main__inputform__text--text"
           %label.chat__main__inputform__text--image_label
-            %input.chat__main__inputform__text--image_label--input{ type: 'file', name: 'message[image]' }
+            %input.chat__main__inputform__text--image_label--input{ type: 'file', name: 'message[image_url]' }
             %i.chat__main__inputform__text--image_label--input-deco.fa.fa-image
 
         %div.chat__main__inputform__button-div

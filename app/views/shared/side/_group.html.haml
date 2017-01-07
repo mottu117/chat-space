@@ -1,5 +1,5 @@
 -# サイドメニューの配下、グループを表示する部分テンプレート。
-= link_to group_messeges_path(current_user_group), class: "chat__side-bar__group-list__groups-ul--links" do
+= link_to group_messages_path(current_user_group), class: "chat__side-bar__group-list__groups-ul--links" do
   %li.chat__side-bar__group-list__groups-ul__groups-li
     %p.chat__side-bar__group-list__groups-ul__groups-li--groupname
       = current_user_group.group_name
