@@ -4,4 +4,4 @@
     %p.chat__side-bar__group-list__groups-ul__groups-li--groupname
       = current_user_group.group_name
     %p.chat__side-bar__group-list__groups-ul__groups-li--new-message
-      = apphelper_show_text_boolean(current_user_group.group_name,"まだメッセージはありません")
+      = messagehelper_nil_check(current_user_group.messages.last)
