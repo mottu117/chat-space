@@ -10,15 +10,16 @@ module ApplicationHelper
         end
     end
 
-    def apphelper_show_text_boolean(true_text, false_text)
-        if true_text
-            true_text
+    # messege関連で使用するヘルパー
+    def messagehelper_nil_check(last_message)
+        if last_message.nil?
+            'まだメッセージはありません'
         else
-            false_text
+            last_message.text
         end
     end
 
-    # group画面で使用するヘルパー
+    # group関連で使用するヘルパー
     def grouphelper_show_error_data(message)
         if message
             content_tag('div', class: 'chat-group-form__errors') do

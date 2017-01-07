@@ -11,7 +11,7 @@
         %p.chat__main__info__group-info--group-name
           = @group.group_name
         %span.chat__main__info__group-info--menbers-rabel Menbers:
-        = render partial: "/shared/main/info_groupuser", collection: @group.groups_users, as: "groups_user"
+        = render partial: "/shared/main/info_groupuser", collection: @group.users, as: "users"
 
       %div.chat__main__info__edit-form
         = link_to "Edit", edit_group_path(@group), class: "chat__main__info__edit-form--button"
