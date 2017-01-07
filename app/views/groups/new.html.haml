@@ -1,4 +1,5 @@
 .chat-group-form
+  = grouphelper_show_error_data(@error_message)
   %h1 新規チャットグループ
   %div#new_chat_group.new_chat_group
     = form_for @group do |f|
