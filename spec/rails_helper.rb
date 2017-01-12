@@ -7,6 +7,11 @@ require 'rspec/rails'
 # http://qiita.com/tetsu8dayo/items/d6a06a13a8ec0fdf8fa6
 require 'rails-controller-testing'
 
+# http://j-caw.co.jp/blog/?p=1388
+require 'capybara/rspec'
+require 'capybara/rails'
+include Capybara::DSL
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in

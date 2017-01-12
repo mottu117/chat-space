@@ -63,6 +63,9 @@ end
 group :test do
   gem 'faker'
 
-  #http://tech.grooves.com/entry/2016/07/01/184458
+  # http://tech.grooves.com/entry/2016/07/01/184458
   gem 'rails-controller-testing', require: false
+
+  # http://j-caw.co.jp/blog/?p=1388
+  gem 'capybara'
 end
