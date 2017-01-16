@@ -1,12 +1,7 @@
 FactoryGirl.define do
     factory :group, class: Group do
         sequence :id, &:to_s
-        sequence :group_name do |n|
-            "group_name#{n}"
-        end
-
-        trait :association_message do
-            association :message, factory: :message
-        end
+        group_name { Faker::StarWars.planet }
+        created_at { Faker::Time.between(2.days.ago, Time.now, :all) }
     end
 end
