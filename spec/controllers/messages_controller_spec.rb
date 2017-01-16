@@ -48,7 +48,6 @@ describe MessagesController do
 
                 it '事後flash(notice)' do
                     sign_in user
-                    message.valid?
                     post :create, params: { message: attributes_for(:message), group_id: group, user_id: user }
                     expect(:notice).not_to be_empty
                 end
@@ -58,21 +57,17 @@ describe MessagesController do
                 describe 'バリデーションチェック_message.text' do
                     it '事後データ件数[無変化]確認' do
                         expect do
-                            post :create, params: { message: attributes_for(:message), group_id: group, user_id: user }
-                        end.not_to change(User, :count)
+                            post :create, params: { message: attributes_for(:message, :nil_text), group_id: group, user_id: user }
+                        end.not_to change(Message, :count)
                     end
 
                     it '事後画面遷移（redirect_to group_messages_path）' do
-                        message.text = ''
-                        message.valid?
-                        post :create, params: { message: attributes_for(:message), group_id: group, user_id: user }
+                        post :create, params: { message: attributes_for(:message, :nil_text), group_id: group, user_id: user }
                         expect(response).to redirect_to group_messages_path
                     end
 
                     it '事後flash(alert) ' do
-                        message.text = ''
-                        message.valid?
-                        post :create, params: { message: attributes_for(:message), group_id: group, user_id: user }
+                        post :create, params: { message: attributes_for(:message, :nil_text), group_id: group, user_id: user }
                         expect(:alert).not_to be_empty
                     end
                 end
@@ -84,12 +79,6 @@ describe MessagesController do
                 get :index, params: { group_id: group, user_id: user }
                 expect(assigns(:group)).to match(group)
             end
-
-            # messegeの内容は、groupのアソシエーションから取得しているが、テストの仕方がどうしてもわからない。。。。
-            # it 'indexアクションで取得する、messageデータのチェック' do
-            #     get :index, params:  { for_assiation(:group, :association_message), group_id: group.id, user_id: user.id }
-            #     expect(assigns(:groups.messages)).to match(message)
-            # end
 
             it 'indexテンプレートへの遷移' do
                 get :index, params: { group_id: group }
