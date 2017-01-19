@@ -1,5 +1,9 @@
 $(function() {
 
+    function resetForm() {
+        Form.reset("new_message");
+    }
+
     if (window.FormData) { //古いブラウザでないか、確認・ログする。
         console.log("HTML5 FormData に対応している");
     } else {
@@ -33,13 +37,15 @@ $(function() {
                 datatype: 'json'
             })
             .done(function(data, res) {
-                console.log("json_res", res); //成功ログ
                 var message_html = build_message(data);
                 $('.chat__main__contents__chat-ul').append(message_html);
+
+                console.log("json_res", res); //成功ログ
             })
             .fail(function(jqXHR, textStatus, errorThrown) {
                 console.log('json_error', jqXHR, textStatus, errorThrown); //失敗ログ
                 alert('error');
             });
+        this.reset(); // フォームリセット
     });
 });
