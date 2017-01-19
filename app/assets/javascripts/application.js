@@ -14,3 +14,15 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+//共通関数には、app_を冠するものとする。
+
+//文字列を指定日付形式へ加工する。ゼロパディングあり。
+function app_toLocaleString(date) {
+    return [
+            date.getFullYear(),
+            ('0' + date.getMonth() + 1).slice(-2),
+            ('0' + date.getDate()).slice(-2)
+        ].join('/') + ' ' +
+        date.toLocaleTimeString();
+}

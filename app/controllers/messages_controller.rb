@@ -2,13 +2,21 @@ class MessagesController < ApplicationController
     def index
         @current_user_groups = appfunc_get_current_user_groups # application_controllerより継承
         @group = Group.find(params[:group_id])
-        @message = Message.new #form_for渡し
+        @message = Message.new # form_for渡し
     end
 
     def create
         message = Message.new(message_params)
         if message.save(message_params)
-            redirect_to group_messages_path, notice: 'メッセージを投稿しました。'
+            respond_to do |format|
+                format.html { redirect_to group_messages_path, notice: 'メッセージを投稿しました。' }
+
+                format.json do
+                    render json: message.to_json( include: { user: { only: :nickname } } )
+
+                end
+
+            end
         else
             redirect_to group_messages_path, alert: 'メッセージを投稿できませんでした。テキストが未入力の可能性があります。'
         end
