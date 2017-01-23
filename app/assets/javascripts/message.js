@@ -36,17 +36,15 @@ $(function() {
                 contentType: false,
                 datatype: 'json'
             })
-
             .done(function(data) {
+                console.log(data)
                 var message_html = build_message(data);
                 $('.chat__main__contents__chat-ul').append(message_html);
                 app_controll_Flash_Message('notice', 'メッセージを投稿しました。');
             })
-
             .fail(function() {
                 app_controll_Flash_Message('alert', '投稿できませんでした。テキストが未入力か、不正なデータです。');
             })
-
             .always(function() {
                 $('.chat__main__inputform__button-div--button').prop({ //ボタン機能復活
                     disabled: false,
