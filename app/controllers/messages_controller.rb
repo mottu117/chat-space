@@ -7,17 +7,13 @@ class MessagesController < ApplicationController
 
     def create
         message = Message.new(message_params)
-        if message.valid?
-            if message.save(message_params)
-                respond_to do |format|
-                    format.html { redirect_to group_messages_path }
+        if message.save(message_params)
+            respond_to do |format|
+                format.html { redirect_to group_messages_path }
 
-                    format.json do
-                        render json: message, status: 200
-                    end
+                format.json do
+                    render json: message, status: 200
                 end
-            else
-                redirect_to group_messages_path, alert: '投稿に失敗しました。管理者に確認してください。'
             end
         else
             respond_to do |format|
