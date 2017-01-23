@@ -11,7 +11,7 @@ $(function() {
                 message.user.nickname,
 
                 '<span class="chat__main__contents__chat-ul__chat-li--userinfo--datetime">' +
-                app_toLocaleString(new Date(message.created_at)),
+                message.created_at_Prepared,
 
                 '<p class="chat__main__contents__chat-ul__chat-li--userinfo--message">' +
                 message.text

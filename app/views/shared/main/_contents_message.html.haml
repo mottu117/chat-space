@@ -3,6 +3,6 @@
   %span.chat__main__contents__chat-ul__chat-li--userinfo--username
     = message.user.nickname
   %span.chat__main__contents__chat-ul__chat-li--userinfo--datetime
-    = l message.created_at, format: :default #I18n.localize。日付データを日本国書式に整形する。
+    = message.created_at_Prepared
   %p.chat__main__contents__chat-ul__chat-li--userinfo--message
     = message.text

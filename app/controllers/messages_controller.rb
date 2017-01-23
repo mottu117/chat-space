@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
                     format.html { redirect_to group_messages_path }
 
                     format.json do
-                        render json: message.to_json(include: { user: { only: :nickname } }), status: 200
+                        render json: message, status: 200
                     end
                 end
             else
@@ -24,7 +24,7 @@ class MessagesController < ApplicationController
                 format.html { redirect_to group_messages_path }
 
                 format.json do
-                    render json: message.to_json(include: { user: { only: :nickname } }), status: 400
+                    render nothing: true, status: 400
                 end
             end
         end
