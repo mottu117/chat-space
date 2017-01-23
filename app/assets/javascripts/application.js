@@ -1,21 +1,7 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file.
-//
-// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
-// about supported directives.
-//
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
-
 
 //共通関数には、app_を冠するものとする。
 
@@ -33,14 +19,12 @@ function app_toLocaleString(date) {
 function app_controll_Flash_Message(flash_sign, message) {
     if (flash_sign === 'alert') {
         $(document.body).prepend('<div class="flash_message--aleat">' + message);
-
         $('.flash_message--aleat').fadeOut(10000).queue(function() {
             this.remove();
         });
 
     } else if (flash_sign === 'notice') {
         $(document.body).prepend('<div class="flash_message--notice">' + message);
-
         $('.flash_message--notice').fadeOut(3000).queue(function() {
             this.remove();
         });
