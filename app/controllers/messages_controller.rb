@@ -7,18 +7,26 @@ class MessagesController < ApplicationController
 
     def create
         message = Message.new(message_params)
-        if message.save(message_params)
-            respond_to do |format|
-                format.html { redirect_to group_messages_path, notice: 'メッセージを投稿しました。' }
+        if message.valid?
+            if message.save(message_params)
+                respond_to do |format|
+                    format.html { redirect_to group_messages_path }
 
-                format.json do
-                    render json: message.to_json( include: { user: { only: :nickname } } )
-
+                    format.json do
+                        render json: message.to_json(include: { user: { only: :nickname } }), status: 200
+                    end
                 end
-
+            else
+                redirect_to group_messages_path, alert: '投稿に失敗しました。管理者に確認してください。'
             end
         else
-            redirect_to group_messages_path, alert: 'メッセージを投稿できませんでした。テキストが未入力の可能性があります。'
+            respond_to do |format|
+                format.html { redirect_to group_messages_path }
+
+                format.json do
+                    render json: message.to_json(include: { user: { only: :nickname } }), status: 400
+                end
+            end
         end
     end
 
