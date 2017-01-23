@@ -37,7 +37,6 @@ $(function() {
                 datatype: 'json'
             })
             .done(function(data) {
-                console.log(data)
                 var message_html = build_message(data);
                 $('.chat__main__contents__chat-ul').append(message_html);
                 app_controll_Flash_Message('notice', 'メッセージを投稿しました。');
