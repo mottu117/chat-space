@@ -9,5 +9,10 @@
 
     %div.chat__main__contents
       %p グループを作成するか、選択してください。
+      -# ↓自動スクロール実施のため、対象セレクタとして記述。ないと、エラーメッセージがでる。
+      %ul.chat__main__contents__chat-ul
+        %li.chat__main__contents__chat-ul__chat-li
+
+
 
     %div.chat__main__inputform
