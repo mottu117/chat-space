@@ -5,8 +5,7 @@ class Message < ApplicationRecord
     validates :text, presence: true
 
     def created_at_Prepared
-        output = created_at.strftime('%Y/%m/%d/ %H:%M:%S')
-        output
+        created_at.strftime('%Y/%m/%d/ %H:%M:%S')
     end
 
     def as_json(_options = {})
