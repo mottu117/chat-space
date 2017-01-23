@@ -7,9 +7,14 @@ $(function() {
     function build_message(message) { //非同期メッセージ描画
         var html =
             $('<li class="chat__main__contents__chat-ul__chat-li">').append(
-                '<span class="chat__main__contents__chat-ul__chat-li--userinfo--username">' + message.user.nickname,
-                '<span class="chat__main__contents__chat-ul__chat-li--userinfo--datetime">' + app_toLocaleString(new Date(message.created_at)),
-                '<p class="chat__main__contents__chat-ul__chat-li--userinfo--message">' + message.text
+                '<span class="chat__main__contents__chat-ul__chat-li--userinfo--username">' +
+                message.user.nickname,
+
+                '<span class="chat__main__contents__chat-ul__chat-li--userinfo--datetime">' +
+                app_toLocaleString(new Date(message.created_at)),
+
+                '<p class="chat__main__contents__chat-ul__chat-li--userinfo--message">' +
+                message.text
             );
         return html;
     }
@@ -32,20 +37,17 @@ $(function() {
                 datatype: 'json'
             })
 
-            .done(function(data, res) {
-                console.log("ajax_done:", res, data); //成功ログ
+            .done(function(data) {
                 var message_html = build_message(data);
                 $('.chat__main__contents__chat-ul').append(message_html);
                 app_controll_Flash_Message('notice', 'メッセージを投稿しました。');
             })
 
-            .fail(function(data, textStatus, errorThrown) {
-                console.log('ajax_fail:', textStatus, data, errorThrown); //失敗ログ
+            .fail(function() {
                 app_controll_Flash_Message('alert', '投稿できませんでした。テキストが未入力か、不正なデータです。');
             })
 
             .always(function() {
-                console.log("into_ajax_always");
                 $('.chat__main__inputform__button-div--button').prop({ //ボタン機能復活
                     disabled: false,
                     value: "Send"
