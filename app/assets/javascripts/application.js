@@ -3,9 +3,17 @@
 //= require turbolinks
 //= require_tree .
 
-//共通関数には、app_を冠するものとする。
 
-//フラッシュメッセージコントロール flash_sign = (alert: 警告, notice: 情報, reset: 表示メッセージ除去)
+////共通関数・変数には、app_を冠するものとする。
+
+//////URL変数定義(正規表現)
+var app_url_Message_Index = /groups\/\d+\/messages/; //http://localhost:3000/groups/1/messages
+
+
+
+//////fanction群定義
+
+////////フラッシュメッセージコントロール flash_sign = (alert: 警告, notice: 情報, reset: 表示メッセージ除去)
 function app_controll_Flash_Message(flash_sign, message) {
     if (flash_sign === 'alert') {
         $(document.body).prepend('<div class="flash_message--aleat">' + message);
@@ -25,9 +33,9 @@ function app_controll_Flash_Message(flash_sign, message) {
     }
 }
 
-//最下まで自動スクロール(target_selector = アニメーションさせるセレクタ, index_selector = アニメーション量/高さ を取得するセレクタ )
+////////最下まで自動スクロール(target_selector = アニメーションさせるセレクタ, index_selector = アニメーション量/高さ を取得するセレクタ )
 function app_goBottom(target_selector, index_selector) {
-  $(target_selector).animate({
-      scrollTop: $(index_selector)[0].offsetHeight
-  }, 'normal');
+    $(target_selector).animate({
+        scrollTop: $(index_selector)[0].offsetHeight
+    }, 'normal');
 }

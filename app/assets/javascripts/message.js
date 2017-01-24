@@ -1,7 +1,8 @@
 $(function() {
-
     $(document).on('turbolinks:load', function() { //Turbolinks5対応 ページ読み込みと同時に処理。
-        app_goBottom('.chat__main__contents', '.chat__main__contents__chat-ul'); //最新メッセージまでスクロール。
+        if (location.pathname.match(app_url_Message_Index)) { //message.index画面である時の処理
+            app_goBottom('.chat__main__contents', '.chat__main__contents__chat-ul'); //最新メッセージまでスクロール。
+        }
     });
 
     function build_message(message) { //非同期メッセージ描画
