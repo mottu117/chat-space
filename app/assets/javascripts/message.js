@@ -27,7 +27,7 @@ $(function() {
         //取得関連
         var get_Form = $('#new_message').get(0);
         var send_Data = new FormData(get_Form); //参考 http://js.studio-kingdom.com/javascript/operators/new, http://hakuhin.jp/js/form_data.html,  http://js.studio-kingdom.com/jquery/core/get
-        var forword_Url = $('.new_message').attr('action'); //参考 http://js.studio-kingdom.com/jquery/attributes/attr
+        var forword_Url = $('#new_message').attr('action'); //参考 http://js.studio-kingdom.com/jquery/attributes/attr
 
         $.ajax({
                 type: 'POST',
