@@ -1,6 +1,8 @@
 class GroupsController < ApplicationController
     before_action :initialize_group_instance, only: [:new, :create]
+
     before_action :get_target_group, only: [:edit, :update]
+    before_action :serch_other_users, only: [:new, :edit]
 
     def index
         @current_user_groups = appfunc_get_current_user_groups # application_controllerより継承
@@ -8,6 +10,14 @@ class GroupsController < ApplicationController
 
     def new
         # before_actionによりGroupインスタンスを事前生成してある。
+        # before_actionによりUserインスタンスを事前生成し、カレントユーザを以外のデータを取得してある。
+        respond_to do |format| # ユーザーインクリメンタルサーチ
+            format.html {}
+
+            format.json do
+                render json: @other_users.as_json(only: ['id', 'nickname']), status: 200
+            end
+        end
     end
 
     def create
@@ -43,6 +53,17 @@ class GroupsController < ApplicationController
 
     def group_params
         params.require(:group).permit(:group_name, user_ids: [])
+    end
+
+    # def serch_params
+    #     params.require(:search)
+    # end
+
+    def serch_other_users # カレントユーザを除く,ユーザ検索
+        if params[:search]
+            word = "and nickname like '#{params[:search]}%'" # 検索文字があれば。
+        end
+        @other_users = User.where(" id != #{current_user.id} #{word}")
     end
 
     def get_target_group

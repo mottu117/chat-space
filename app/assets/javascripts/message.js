@@ -1,7 +1,8 @@
 $(function() {
-
     $(document).on('turbolinks:load', function() { //Turbolinks5対応 ページ読み込みと同時に処理。
-        app_goBottom('.chat__main__contents', '.chat__main__contents__chat-ul'); //最新メッセージまでスクロール。
+        if (location.pathname.match(app_url_Message_Index)) { //message.index画面である時の処理
+            app_goBottom('.chat__main__contents', '.chat__main__contents__chat-ul'); //最新メッセージまでスクロール。
+        }
     });
 
     function build_message(message) { //非同期メッセージ描画
@@ -26,7 +27,7 @@ $(function() {
         //取得関連
         var get_Form = $('#new_message').get(0);
         var send_Data = new FormData(get_Form); //参考 http://js.studio-kingdom.com/javascript/operators/new, http://hakuhin.jp/js/form_data.html,  http://js.studio-kingdom.com/jquery/core/get
-        var forword_Url = $('.new_message').attr('action'); //参考 http://js.studio-kingdom.com/jquery/attributes/attr
+        var forword_Url = $('#new_message').attr('action'); //参考 http://js.studio-kingdom.com/jquery/attributes/attr
 
         $.ajax({
                 type: 'POST',
