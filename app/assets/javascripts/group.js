@@ -75,6 +75,7 @@ $(function() {
                 '</div>'
             );
         }
+        $(this).parent().prop("hidden", "true"); //候補へ追加したら、サーチ結果から隠す。
     });
 
     $(document).on('click', '.chat-group-user__btn--remove', function() { //ユーザに対するグループからの除外処理
