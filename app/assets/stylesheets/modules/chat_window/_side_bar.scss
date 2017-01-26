@@ -39,6 +39,7 @@
     &__group-list {
         overflow-y: scroll;
         padding: 0 20px;
+        height: calc(100% - 100px);
 
         &__groups-ul {
 
