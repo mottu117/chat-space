@@ -1,33 +1,30 @@
 .chat-group-form
   = grouphelper_show_error_data(@error_message)
   %h1 新規チャットグループ
-  #new_chat_group.new_chat_group
-    = form_for [@group] do |f|
+  %div#new_chat_group.new_chat_group
+    = form_for @group do |f|
       .chat-group-form__field.clearfix
         .chat-group-form__field--left
           = f.label :グループ名, class: "chat-group-form__label", for: "chat_group_name"
         .chat-group-form__field--right
           = f.text_area :group_name, row: "1", placeholder: "グループ名を入力してください", id: "chat_group_name", class: "chat-group-form__input", required: true
-
       .chat-group-form__field.clearfix
-        .chat-group-form__field--left
-          = f.label :チャットメンバーを追加, class: "chat-group-form__label", for: "chat_group_チャットメンバーを追加"
-        .chat-group-form__field--right
-          .chat-group-form__search.clearfix
-            %input#user-search-field.chat-group-form__input{ placeholder: "追加したいユーザー名を入力してください", type: "text" }
-          #user-search-result
-
+        -# インクリメンタルサーチ化の工事予定地
+        -# .chat-group-form__field--left
+        -#   = f.label :チャットメンバーを追加, class: "chat-group-form__label", for: "chat_group_チャットメンバーを追加"
+        -# .chat-group-form__field--right
+        -#   .chat-group-form__search.clearfix
+        -#  = f.text_area :name,row: "1", placeholder: "追加したいユーザー名を入力してください", id: "chat_group_name", class: "chat-group-form__input"
+        -#   #user-search-result
       .chat-group-form__field.clearfix
         .chat-group-form__field--left
           = f.label :チャットメンバー, class: "chat-group-form__label", for: "chat_group_チャットメンバー"
         .chat-group-form__field--right
           #chat-group-users
-            %div.chat-group-user.clearfix#chat-group-user-self
-              %p.chat-group-user__name
-                = current_user.nickname
-              %input{name: "group[user_ids][]", type: "hidden", value: current_user.id }
-
+            #chat-group-user-22.chat-group-user.clearfix
+              = f.collection_check_boxes :user_ids, User.all, :id, :nickname do |b|
+                = b.check_box + b.label { b.text }
       .chat-group-form__field.clearfix
         .chat-group-form__field--left
         .chat-group-form__field--right
-          = f.submit "Save", name: "commit", class: "chat-group-form__action-btn", data: { disable_with: "Saving..." }
+          = f.submit "Save", name: "commit", class: "chat-group-form__action-btn"
