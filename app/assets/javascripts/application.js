@@ -6,9 +6,9 @@
 
 ////共通関数・変数には、app_を冠するものとする。
 
-//////URL変数定義(正規表現)
+//////URL変数定義
 var app_url_Message_Index = /groups\/\d+\/messages/; //http://localhost:3000/groups/1/messages
-
+var app_url_Group_New     = '/groups/new';               //http://localhost:3000/groups/new
 
 
 //////fanction群定義
