@@ -1,30 +1,30 @@
 .chat-group-form
   = grouphelper_show_error_data(@error_message)
   %h1 チャットグループ編集
-  %div#edit_chat_group_22.edit_chat_group
+  %div.edit_chat_group
     = form_for @target_group do |f|
       .chat-group-form__field.clearfix
         .chat-group-form__field--left
           = f.label :グループ名, class: "chat-group-form__label"
         .chat-group-form__field--right
           = f.text_area :group_name, id: "#chat_group_name", class: "chat-group-form__input", placeholder: "グループ名を入力してください", type: "text", required: true
-      -# インクリメンタルサーチ化の工事予定地
-      -# .chat-group-form__field.clearfix
-      -#   .chat-group-form__field--left
-      -#     = f.label :チャットメンバーを追加, class: "chat-group-form__label"
-      -#   .chat-group-form__field--right
-      -#     .chat-group-form__search.clearfix
-      -#       #user-search-field.chat-group-form__input{:placeholder => "追加したいユーザー名を入力してください", :type => "text"}/
-      -#     #user-search-result
+
       .chat-group-form__field.clearfix
         .chat-group-form__field--left
-          = f.label :チャットメンバー, class: "chat-group-form__label"
-        .chat-group-form__field.clearfix
-          -# .chat-group-form__field--left
-          .span.cchat-group-form__input
-            = f.collection_check_boxes :user_ids, User.all, :id, :nickname do |b|
-              = b.check_box + b.label { b.text }
-        .chat-group-form__field.clearfix
-          .chat-group-form__field--left
-          .chat-group-form__field--right
-            = f.submit "Save", name: "commit", class: "chat-group-form__action-btn"
+          = f.label :チャットメンバーを追加, class: "chat-group-form__label", for: "chat_group_チャットメンバーを追加"
+        .chat-group-form__field--right
+          .chat-group-form__search.clearfix
+            %input#user-search-field.chat-group-form__input{ placeholder: "追加したいユーザー名を入力してください", type: "text" }
+          #user-search-result
+
+      .chat-group-form__field.clearfix
+        .chat-group-form__field--left
+          = f.label :チャットメンバー, class: "chat-group-form__label", for: "chat_group_チャットメンバー"
+        .chat-group-form__field--right
+          #chat-group-users
+            = render partial: "shared/group/user_list", collection: @target_group.users, as: "user"
+
+      .chat-group-form__field.clearfix
+        .chat-group-form__field--left
+        .chat-group-form__field--right
+          = f.submit "Save", name: "commit", class: "chat-group-form__action-btn", data: { disable_with: "Saving..." }
