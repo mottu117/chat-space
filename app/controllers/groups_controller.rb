@@ -10,12 +10,12 @@ class GroupsController < ApplicationController
 
     def new
         # before_actionによりGroupインスタンスを事前生成してある。
-        # before_actionによりUserインスタンスを事前生成し、カレントユーザを以外のデータを取得してある。
+        # before_actionによりUserインスタンスを事前生成し、ユーザのデータを取得してある。
         respond_to do |format| # ユーザーインクリメンタルサーチ
             format.html {}
 
             format.json do
-                render json: @other_users.as_json(only: ['id', 'nickname']), status: 200
+                render json: @search_users.as_json(only: %w(id nickname)), status: 200
             end
         end
     end
@@ -55,15 +55,10 @@ class GroupsController < ApplicationController
         params.require(:group).permit(:group_name, user_ids: [])
     end
 
-    # def serch_params
-    #     params.require(:search)
-    # end
-
-    def serch_other_users # カレントユーザを除く,ユーザ検索
+    def serch_other_users # ユーザ検索
         if params[:search]
-            word = "and nickname like '#{params[:search]}%'" # 検索文字があれば。
+            @search_users = User.where("nickname like '#{params[:search]}%'")
         end
-        @other_users = User.where(" id != #{current_user.id} #{word}")
     end
 
     def get_target_group
