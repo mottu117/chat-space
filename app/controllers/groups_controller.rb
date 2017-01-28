@@ -15,7 +15,7 @@ class GroupsController < ApplicationController
             format.html {}
 
             format.json do
-                render json: @other_users.as_json(only: ['id', 'nickname']), status: 200
+                render json: @search_users.as_json(only: ['id', 'nickname']), status: 200
             end
         end
     end
@@ -59,11 +59,11 @@ class GroupsController < ApplicationController
     #     params.require(:search)
     # end
 
-    def serch_other_users # カレントユーザを除く,ユーザ検索
+    def serch_other_users # ユーザ検索
         if params[:search]
-            word = "and nickname like '#{params[:search]}%'" # 検索文字があれば。
+            word = "nickname like '#{params[:search]}%'" # 検索文字があれば。
         end
-        @other_users = User.where(" id != #{current_user.id} #{word}")
+        @search_users = User.where("#{word}")
     end
 
     def get_target_group

@@ -82,4 +82,14 @@ $(function() {
         $(this).parent().remove();
     });
 
+    $(document).on('click', '.chat-group-form__action-btn', function(e) { //submit時のエラーチェック
+        app_controll_Flash_Message('reset', '');
+
+        if ($('#chat-group-users').children().length !== 0 ) { //候補ユーザがいるか確認。
+             //なにもしないので、submitに入る。
+        } else {
+            e.preventDefault();
+            app_controll_Flash_Message('alert', 'メンバーを一人以上指定してください。');
+        }
+    });
 });
