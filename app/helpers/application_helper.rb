@@ -11,9 +11,11 @@ module ApplicationHelper
     end
 
     # messege関連で使用するヘルパー
-    def messagehelper_nil_check(last_message) # メッセージが未投稿の場合の表示
+    def messagehelper_nil_check(last_message) # メッセージまたは画像が未投稿の場合の表示
         if last_message.nil?
             'まだメッセージはありません'
+        elsif last_message.text.length == 0
+            '画像が投稿されました。'
         else
             last_message.text
         end
