@@ -1,0 +1,16 @@
+# carrierwave.ja.yml
+# https://github.com/carrierwaveuploader/carrierwave/blob/master/lib/carrierwave/locale/en.ymlを翻訳
+ja:
+  errors:
+    messages:
+      carrierwave_processing_error: "処理に失敗しました。" # failed to be processed
+      carrierwave_integrity_error: "は許可されたファイルタイプではありません" # is not of an allowed file type
+      carrierwave_download_error: "ダウンロードできませんでした" # could not be downloaded
+      extension_whitelist_error: "あなたは %{extension}ファイルのアップロードを許可されていません。許可されているのは %{allowed_types}ファイルです。" # "You are not allowed to upload %{extension} files, allowed types: %{allowed_types}"
+      extension_blacklist_error: "あなたは %{extension}ファイルのアップロードを許可されていません。禁止されているのは %{prohibited_types}ファイルです。" # "You are not allowed to upload %{extension} files, prohibited types: %{prohibited_types}"
+      content_type_whitelist_error: "あなたは％{content_type}ファイルをアップロードできません" # "You are not allowed to upload %{content_type} files"
+      content_type_blacklist_error: "あなたは％{content_type}ファイルをアップロードできません" # "You are not allowed to upload %{content_type} files"
+      rmagick_processing_error: "rmagickで操作できませんでした。画像ファイルではない可能性があります。" # "Failed to manipulate with rmagick, maybe it is not an image?"
+      mini_magick_processing_error: "mini_magickで操作できませんでした。画像ファイルではない可能性があります。元のエラー：％{e}" # "Failed to manipulate with MiniMagick, maybe it is not an image? Original Error: %{e}"
+      min_size_error: "ファイルサイズは％{min_size}より大きくする必要があります" # "File size should be greater than %{min_size}"
+      max_size_error: "ファイルサイズは％{max_size}未満でなければなりません" # "File size should be less than %{max_size}"
