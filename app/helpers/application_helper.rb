@@ -2,7 +2,7 @@ module ApplicationHelper
     # application_helper.rbに集約したメソッドには、apphelperを冠するものとする。
     # どこに記載されている処理なのかわかりにくくなるので。
 
-    def apphelper_show_flash_massage(flash_alert, flash_notice)
+    def apphelper_show_flash_massage(flash_alert, flash_notice) # javascriptを使用しない場合のflash
         if flash_alert
             content_tag('div', flash.now[:alert], class: 'flash_message--aleat')
         elsif flash_notice
@@ -11,11 +11,17 @@ module ApplicationHelper
     end
 
     # messege関連で使用するヘルパー
-    def messagehelper_nil_check(last_message)
+    def messagehelper_nil_check(last_message) # メッセージが未投稿の場合の表示
         if last_message.nil?
             'まだメッセージはありません'
         else
             last_message.text
+        end
+    end
+
+    def messagehelper_image_mount(message_id, image_url) # イメージファイルの表示
+        if image_url.length != 0 #イメージファイルが存在する時
+            image_tag("#{image_url}")
         end
     end
 
