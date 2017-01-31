@@ -6,6 +6,12 @@ $(function() {
     });
 
     function build_message(message) { //非同期メッセージ描画
+        var img_Tag = ""; //画像タグの格納先
+
+        if (message.image_url.url !== null) { //画像データが存在する時
+            img_Tag = ('<p><img src="' + message.image_url.url + '"></p>');
+        }
+
         var html =
             $('<li class="chat__main__contents__chat-ul__chat-li">').append(
                 '<span class="chat__main__contents__chat-ul__chat-li--userinfo--username">' +
@@ -17,8 +23,10 @@ $(function() {
                 '<p class="chat__main__contents__chat-ul__chat-li--userinfo--message">' +
                 message.text,
 
-                '<p><img src="' + message.image_url.url + '"></p>'
+                img_Tag
             );
+
+
         return html;
     }
 
