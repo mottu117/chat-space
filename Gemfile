@@ -47,6 +47,8 @@ gem 'erb2haml'
 gem 'carrierwave'
 #http://qiita.com/syou007/items/98842179e83c03e5f882
 
+gem "mini_magick"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
