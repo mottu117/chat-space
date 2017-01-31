@@ -15,7 +15,9 @@ $(function() {
                 message.created_at_Prepared,
 
                 '<p class="chat__main__contents__chat-ul__chat-li--userinfo--message">' +
-                message.text
+                message.text,
+
+                '<p><img src="' + message.image_url.url + '"></p>'
             );
         return html;
     }
@@ -43,7 +45,7 @@ $(function() {
                 app_controll_Flash_Message('notice', 'メッセージを投稿しました。');
             })
             .fail(function() {
-                app_controll_Flash_Message('alert', '投稿できませんでした。テキストが未入力か、不正なデータです。');
+                app_controll_Flash_Message('alert', '投稿できませんでした。テキストが未入力か、不正なデータです。画像は(jpg, jpeg, gif ,png)形式にして下さい。');
             })
             .always(function() {
                 $('.chat__main__inputform__button-div--button').prop({ //ボタン機能復活
