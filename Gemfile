@@ -42,7 +42,10 @@ gem "font-awesome-rails"
 #http://qiita.com/succi0303/items/7f76d53ebe54dab41124
 
 gem 'erb2haml'
-#corp.en-japan.com
+#http://qiita.com/m_doi/items/1f01fd2b1a52c2c43f1f
+
+gem 'carrierwave'
+#http://qiita.com/syou007/items/98842179e83c03e5f882
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
