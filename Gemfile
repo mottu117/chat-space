@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use mysql as the database for Active Record
@@ -35,27 +34,25 @@ gem 'devise'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem "haml-rails", "~> 0.9"
-#http://qiita.com/masarufuruya/items/f8e2fe357ebbac0359d6
+gem 'haml-rails', '~> 0.9'
+# http://qiita.com/masarufuruya/items/f8e2fe357ebbac0359d6
 
-gem "font-awesome-rails"
-#http://qiita.com/succi0303/items/7f76d53ebe54dab41124
+gem 'font-awesome-rails'
+# http://qiita.com/succi0303/items/7f76d53ebe54dab41124
 
 gem 'erb2haml'
-#http://qiita.com/m_doi/items/1f01fd2b1a52c2c43f1f
+# http://qiita.com/m_doi/items/1f01fd2b1a52c2c43f1f
 
 gem 'carrierwave'
-#http://qiita.com/syou007/items/98842179e83c03e5f882
+# http://qiita.com/syou007/items/98842179e83c03e5f882
 
-gem "mini_magick"
+gem 'mini_magick'
 
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-  gem 'pry-byebug'
-  gem 'rspec-rails', '~>3.1.0'
-  gem 'factory_girl_rails', '~> 4.4.1'
-end
+gem 'dotenv-rails'
+#http://qiita.com/dawn_628/items/913bf584297b3f4f386a
+
+gem 'config'
+#http://qiita.com/Esfahan/items/fbca4b9a5ed33be0d0b6
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
@@ -68,9 +65,21 @@ end
 group :test do
   gem 'faker'
 
-  # http://tech.grooves.com/entry/2016/07/01/184458
   gem 'rails-controller-testing', require: false
+  # http://tech.grooves.com/entry/2016/07/01/184458
 
-  # http://j-caw.co.jp/blog/?p=1388
   gem 'capybara'
+    # http://j-caw.co.jp/blog/?p=1388
+end
+
+group :development, :test do
+  gem 'byebug'
+  gem 'pry-byebug'
+  gem 'rspec-rails', '~>3.1.0'
+  gem 'factory_girl_rails', '~> 4.4.1'
+end
+
+group :development, :production do
+  gem 'fog'
+  # http://qiita.com/ryo-ichikawa/items/a30dc626cba1ec909d57
 end
