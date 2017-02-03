@@ -1,0 +1,12 @@
+# Upload_storage
+storage_env: :fog
+
+# AWS S3
+AWS_S3_PROVIDER: <%= ENV["AWS_S3_PROVIDER"] %>
+AWS_S3_API_KEY: <%= ENV["AWS_S3_API_KEY"] %>
+AWS_S3_API_SECRET: <%= ENV["AWS_S3_API_SECRET"] %>
+AWS_S3_REGION: <%= ENV["AWS_S3_REGION"] %>
+
+# ENVより環境固有の値を取得バケットの名称は秘匿する)
+AWS_S3_FOG_DIRECTRY: <%= ENV["AWS_S3_FOG_DIRECTRY_PRO"] %>
+AWS_S3_ASSET_HOST: <%= ENV["AWS_S3_ASSET_HOST_PRO"] %>
