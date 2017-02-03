@@ -12,7 +12,7 @@ module MessagesHelper
     end
   end
 
-  def messagehelper_image_mount(_message_id, image_url) # イメージファイルの表示
-    image_tag(image_url.to_s) unless image_url.empty? # イメージファイルが存在する時
+  def messagehelper_image_mount(image_url) # イメージファイルの表示
+    image_tag(image_url.to_s) if image_url # イメージファイルが存在する時
   end
 end

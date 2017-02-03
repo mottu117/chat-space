@@ -7,8 +7,7 @@ class ImageFileUploader < CarrierWave::Uploader::Base
   process resize_to_fit: [200, 200]
 
   # アップローダ選択:
-  storage :file
-  # storage :fog
+  storage Settings.storage_env
 
   # Rails.root/public/ 配下にファイルが配置される
   def store_dir
