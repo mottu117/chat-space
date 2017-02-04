@@ -99,8 +99,7 @@ $(function() {
     if (location.pathname.match(app_url_Message_Index)) { //message.index画面である時に発火
       app_goBottom('.chat__main__contents', '.chat__main__contents__chat-ul'); //最新メッセージまでスクロール。
 
-      var last_message_id = "";
-      global_intervalId_Refresh_Message = setInterval(refresh_message, 5000); //自動更新インターバル指定, Turbolinks5対応でグルーバル管理する。
+      global_intervalId_Refresh_Message = setInterval(refresh_message, 20000); //自動更新インターバル指定, Turbolinks5対応でグルーバル管理する。
 
     }
   });
