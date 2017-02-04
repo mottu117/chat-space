@@ -37,7 +37,6 @@ $(function() {
 
 
   function refresh_message() { //メッセージ自動更新処理
-    console.log("into_refresh");
     var forword_Url = $('#new_message').attr('action');
     var searched_Group_Id = forword_Url.match(/\d/); //グループID取得
 
