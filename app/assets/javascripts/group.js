@@ -1,5 +1,10 @@
 $(function() {
+
+  //////変数宣言群-------------------------------------------------
+
   var search_PreWord = ""; //インクリメンタルサーチにおける、前回文字列記憶枠
+
+  //////function群-------------------------------------------------
 
   function build_Users(searched_Users) { //サーチしたユーザの描画
     var html = "";
@@ -18,6 +23,8 @@ $(function() {
     });
     return html;
   }
+
+  //////action群-------------------------------------------------
 
   $(document).on('keyup', '#user-search-field', function() { //ユーザインクリメンタルサーチ
     setTimeout(function() { //発火間隔 2秒
@@ -78,9 +85,11 @@ $(function() {
     $(this).parent().prop("hidden", "true"); //候補へ追加したら、サーチ結果から隠す。
   });
 
+
   $(document).on('click', '.chat-group-user__btn--remove', function() { //ユーザに対するグループからの除外処理
     $(this).parent().remove();
   });
+
 
   $(document).on('click', '.chat-group-form__action-btn', function(e) { //submit時のエラーチェック
     app_controll_Flash_Message('reset', '');

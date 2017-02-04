@@ -1,5 +1,6 @@
 -# メイン領域の、チャットメッセージを表示するテンプレート。
 %li.chat__main__contents__chat-ul__chat-li
+  .data_message_id{ data:{ message_id: message.id }}
   %span.chat__main__contents__chat-ul__chat-li--userinfo--username
     = message.user.nickname
   %span.chat__main__contents__chat-ul__chat-li--userinfo--datetime

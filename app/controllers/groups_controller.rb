@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   before_action :initialize_group_instance, only: [:new, :create]
 
   before_action :get_target_group, only: [:edit, :update]
-  before_action :serch_other_users, only: [:new, :edit]
+  before_action :serch_users, only: [:new, :edit]
 
   def index
     @current_user_groups = appfunc_get_current_user_groups # application_controllerより継承
@@ -55,7 +55,7 @@ class GroupsController < ApplicationController
     params.require(:group).permit(:group_name, user_ids: [])
   end
 
-  def serch_other_users # ユーザ検索
+  def serch_users # ユーザ検索
     if params[:search]
       @search_users = User.where("nickname like '#{params[:search]}%'")
     end
