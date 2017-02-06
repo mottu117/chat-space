@@ -1,9 +1,6 @@
 $(function() {
-  $(document).on('turbolinks:load', function() { //Turbolinks5対応 ページ読み込みと同時に処理。
-    if (location.pathname.match(app_url_Message_Index)) { //message.index画面である時の処理
-      app_goBottom('.chat__main__contents', '.chat__main__contents__chat-ul'); //最新メッセージまでスクロール。
-    }
-  });
+
+  //////function群-------------------------------------------------
 
   function build_message(message) { //非同期メッセージ描画
     var img_Tag = ""; //画像タグの格納先
@@ -14,6 +11,9 @@ $(function() {
 
     var html =
       $('<li class="chat__main__contents__chat-ul__chat-li">').append(
+
+        '<div class="data_message_id" data-message-id="' + message.id + '"></div>',
+
         '<span class="chat__main__contents__chat-ul__chat-li--userinfo--username">' +
         message.user.nickname,
 
@@ -26,9 +26,88 @@ $(function() {
         img_Tag
       );
 
-
     return html;
   }
+
+  function get_Message_Id_list() { //実行時の,画面上のメッセージID一覧を取得する。
+    return $('.chat__main__contents__chat-ul__chat-li > .data_message_id').map(function() {
+      return $(this).attr('data-message-id');
+    });
+  }
+
+
+  function refresh_message() { //メッセージ自動更新処理
+    var forword_Url = $('#new_message').attr('action');
+    var searched_Group_Id = forword_Url.match(/\d/); //グループID取得
+
+    var Message_Ids_String = ( //画面上に表示されている、メッセージID群を,文字列で取得
+      get_Message_Id_list().get().join()
+    );
+
+    $.ajax({
+        type: 'GET',
+        url: forword_Url + '.json',
+        data: {
+          message: {
+            group_id: searched_Group_Id
+          },
+          recent_message_ids: Message_Ids_String
+        },
+        datatype: 'json'
+      })
+      .done(function(data) {
+        if (Message_Ids_String.length !== 0) { //メッセージが存在するときだけ描画する。
+
+          $.each(data, function(i) {
+            var data_Id = data[i].id;
+            var next_Id = "";
+
+            var Message_Ids_Array = ( //最新の画面上のメッセージIDを配列で取得する。
+              get_Message_Id_list().get()
+            );
+
+            $.each(Message_Ids_Array, function(i) { //自動更新で取得したメッセージの挿入位置を特定するため, 次に大きいID番号を探索する。
+              if (Message_Ids_Array[i] > data_Id) {
+                next_Id = Message_Ids_Array[i];
+                return false;
+              }
+            });
+
+            var message_html = build_message(data[i]); //自動更新メッセージ構築
+
+            if (next_Id) { //自動更新メッセージを,IDで昇順になるように挿入する。インターバル割り込みを考慮。
+              var taget_Selector = $('.data_message_id[data-message-id="' + next_Id + '"]').parent();
+              $(taget_Selector).before(message_html);
+
+            } else {
+              $('.chat__main__contents__chat-ul').append(message_html);
+            }
+          });
+        }
+      })
+      .fail(function() {
+        app_controll_Flash_Message('alert', '自動更新に失敗しました。');
+      })
+      .always(function(data) {
+        app_goBottom('.chat__main__contents', '.chat__main__contents__chat-ul'); //最新メッセージまでスクロール。
+      });
+  }
+
+  //////action群-------------------------------------------------
+
+  $(document).on('turbolinks:load', function() { //Turbolinks5対応 ページの表示時に処理。
+    if (location.pathname.match(app_url_Message_Index)) { //message.index画面である時に発火
+      app_goBottom('.chat__main__contents', '.chat__main__contents__chat-ul'); //最新メッセージまでスクロール。
+
+      global_IntervalId_Refresh_Message = setInterval(refresh_message, 20000); //自動更新インターバル指定, Turbolinks5対応でグルーバル管理する。
+
+    }
+  });
+
+  $(document).on('turbolinks:visit', function() { //Turbolinks5対応 Turbolinksによる遷移が始まった時に処理。
+    clearInterval(global_IntervalId_Refresh_Message); //自動更新処理の破棄
+  });
+
 
   $(document).on('submit', '#new_message', function(e) { //メッセージ投稿時処理
     e.preventDefault();
@@ -63,6 +142,6 @@ $(function() {
         app_goBottom('.chat__main__contents', '.chat__main__contents__chat-ul'); //最新メッセージまでスクロール。
       });
     this.reset(); // フォームリセット
-
   });
+
 });
