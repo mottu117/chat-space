@@ -1,15 +1,14 @@
 class MessagesController < ApplicationController
   def index
-    @current_user_groups = appfunc_get_current_user_groups # application_controllerより継承
     @group = Group.find(params[:group_id])
-    @most_recent_message_id = @group.messages.maximum('id')
-    @message = Message.new # form_for渡し
 
-    unless messages_still_load.nil? # メッセージ差分が無いときはajaxしない
-      respond_to do |format|
-        format.html { redirect_to group_messages_path }
-
-        format.json do
+    respond_to do |format|
+      format.html do
+        @current_user_groups = appfunc_get_current_user_groups # application_controllerより継承
+        @message = Message.new # form_for渡し
+      end
+      format.json do
+        unless messages_still_load.nil? # メッセージ差分が無いときはajaxしない
           render json: messages_still_load, status: 200
         end
       end
@@ -43,7 +42,7 @@ class MessagesController < ApplicationController
     params.require(:message).permit(:text, :image_url).merge(group_id: params[:group_id], user_id: current_user.id)
   end
 
-  def messages_still_load #画面上に存在しないメッセージIDを求める。
+  def messages_still_load # 画面上に存在しないメッセージIDを求める。
     if params[:recent_message_ids]
       @group.messages.where("id not in( #{params[:recent_message_ids]} )")
     end
