@@ -76,8 +76,8 @@ $(function() {
             var message_html = build_message(data[i]); //自動更新メッセージ構築
 
             if (next_Id) { //自動更新メッセージを,IDで昇順になるように挿入する。インターバル割り込みを考慮。
-              var taget_Sector = $('.data_message_id[data-message-id="' + next_Id + '"]').parent();
-              $(taget_Sector).before(message_html);
+              var taget_Selector = $('.data_message_id[data-message-id="' + next_Id + '"]').parent();
+              $(taget_Selector).before(message_html);
 
             } else {
               $('.chat__main__contents__chat-ul').append(message_html);
@@ -99,13 +99,13 @@ $(function() {
     if (location.pathname.match(app_url_Message_Index)) { //message.index画面である時に発火
       app_goBottom('.chat__main__contents', '.chat__main__contents__chat-ul'); //最新メッセージまでスクロール。
 
-      global_intervalId_Refresh_Message = setInterval(refresh_message, 20000); //自動更新インターバル指定, Turbolinks5対応でグルーバル管理する。
+      global_IntervalId_Refresh_Message = setInterval(refresh_message, 20000); //自動更新インターバル指定, Turbolinks5対応でグルーバル管理する。
 
     }
   });
 
   $(document).on('turbolinks:visit', function() { //Turbolinks5対応 Turbolinksによる遷移が始まった時に処理。
-    clearInterval(global_intervalId_Refresh_Message); //自動更新処理の破棄
+    clearInterval(global_IntervalId_Refresh_Message); //自動更新処理の破棄
   });
 
 
